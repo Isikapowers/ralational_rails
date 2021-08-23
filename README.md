@@ -1,1 +1,1 @@
-# ralational_rails
+# relational_rails
