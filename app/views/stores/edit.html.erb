@@ -1,0 +1,12 @@
+<form action="/stores/<%= @store.id %>" method="post">
+  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+  <input type="hidden" name="_method" value="PATCH" />
+  <p>Edit</p>
+  <p>Enter a new store name:</p>
+  <input type='text' name='store[name]' value="<%= @store.name %>"/><br/>
+  <p>Enter a new inventory:</p>
+  <input type="integer" name='store[inventory]' value="><%= @store.inventory %>"/><br/>
+  <p>Open on the weekends:</p>
+  <input type="checkbox" name="store[open_on_weekends]" value="><%= @store.open_on_weekends %>"/><br/>
+  <input type='submit'/>
+</form>

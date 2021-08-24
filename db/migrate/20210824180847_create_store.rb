@@ -5,6 +5,7 @@ class CreateStore < ActiveRecord::Migration[5.2]
       t.boolean :open_on_weekends
       t.integer :inventory
 
+      t.timestamps
     end
   end
 end
