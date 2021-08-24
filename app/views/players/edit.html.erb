@@ -1,0 +1,12 @@
+<form action="/players/<%= @player.id %>" method="post">
+  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+  <input type="hidden" name="_method" value="PATCH" />
+  <p>Edit</p>
+  <p>Update player name:</p>
+  <input type='text' name='player[name]' value="<%= @player.name %>"/><br/>
+  <p>Enter player number:</p>
+  <input type='text' name='player[number]' value="<%= @player.number%>"/><br/>
+  <p>Did player make playoffs?:</p>
+  <input type='checkbox' name='player[injured]' value="<%= @player.injured %>"/><br/>
+  <input type='submit'/>
+</form>
