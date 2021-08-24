@@ -1,0 +1,10 @@
+<form action="/teams" method="post">
+  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+  <p>Enter a new team:</p>
+  <input type='text' name='team[name]'/><br/>
+  <p>Enter total wins:</p>
+  <input type='integer' name='team[wins]'/><br/>
+  <p>Did the team make the playoffs?</p>
+  <input type='checkbox' name='team[make_playoffs]'/><br/>
+  <input type='submit'/>
+</form>
