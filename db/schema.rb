@@ -15,13 +15,21 @@ ActiveRecord::Schema.define(version: 2021_08_24_214517) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+
+  create_table "books", force: :cascade do |t|
+    t.string "title"
+    t.float "price"
+    t.boolean "kids_friendly"
+  end 
+
   create_table "players", force: :cascade do |t|
     t.string "name"
     t.integer "number"
     t.boolean "injured"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-  end
+  end 
+
 
   create_table "stores", force: :cascade do |t|
     t.string "name"
