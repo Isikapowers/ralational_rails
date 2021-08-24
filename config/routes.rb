@@ -20,4 +20,8 @@ Rails.application.routes.draw do
   get "/players", to: "players#index"
   get "/players/new", to: "players#new"
   post "/players", to: "players#create"
+  get "/players/:id", to: "players#show"
+  get "/players/:id/edit", to: "players#edit"
+  patch "/players/:id", to: "players#update"
+  delete "/players/:id", to: "players#destroy"
 end
