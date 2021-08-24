@@ -1,9 +1,9 @@
-<a href="/stores">Store Index</a>
+<a href="/stores">Store Info</a>
 
 <h1><%= @store.name %></h1>
 
-<p><%= @store.inventory %></p>
+<p>Inventory: <%= @store.inventory %></p>
 
-<p><%= @store.open_on_weekends %></p>
+<p>Open on weekends: <%= @store.open_on_weekends %></p>
 
 <a href="/stores/<%= @store.id %>/edit">Edit</a>
