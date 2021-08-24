@@ -1,0 +1,11 @@
+<h1>All Basketball Teams</h1>
+
+<% @teams.each do |team| %>
+  <h3><a href="/teams/<%= team.id %>"><%= team.name %></a></h3>
+  <a href="/teams/<%= team.id  %>/edit">Edit</a>
+  <form action="/teams/<%= team.id %>" method="POST">
+    <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+    <input type="hidden" name="_method" value="DELETE">
+    <input type="submit" value="delete"/>
+  </form>
+<% end %>

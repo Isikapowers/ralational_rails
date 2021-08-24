@@ -9,4 +9,11 @@ Rails.application.routes.draw do
   patch "/stores/:id", to: "stores#update"
   delete "/stores/:id", to: "stores#destroy"
 
+  get "/teams", to: "teams#index"
+  get "/teams/new", to: "teams#new"
+  post "/teams", to: "teams#create"
+  get "/teams/:id", to: "teams#show"
+  get "/teams/:id/edit", to: "teams#edit"
+  patch "/teams/:id", to: "teams#update"
+  delete "/teams/:id", to: "teams#destroy"
 end
