@@ -1,0 +1,10 @@
+<form action="/players" method="post">
+  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+  <p>Enter a new player:</p>
+  <input type='text' name='player[name]'/><br/>
+  <p>Enter their number:</p>
+  <input type='integer' name='player[number]'/><br/>
+  <p>Are they injured?</p>
+  <input type='checkbox' name='player[injured]'/><br/>
+  <input type='submit'/>
+</form>
