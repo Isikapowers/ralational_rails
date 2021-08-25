@@ -1,8 +1,5 @@
-require 'rails-helper'
+require 'rails_helper'
 
 RSpec.describe Player do
-  describe "#initialize" do
-    it "exists and has attributes" do
-    end
-  end
+  it {should belong_to :team}
 end
