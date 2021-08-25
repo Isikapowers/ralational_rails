@@ -1,5 +1,7 @@
 <a href="/books"</a>Book Index</a><br>
-<a href="/stores"</a>Store Index</a>
+<a href="/stores"</a>Store Index</a><br>
+<a href="/teams"</a>Team Index</a><br>
+<a href="/players"</a>Players Index</a><br>
 
 <h1>All Basketball Teams</h1><br>
 
@@ -7,6 +9,7 @@
 
 <% @teams.each do |team| %>
   <h4><a href="/teams/<%= team.id %>"><%= team.name %></a></h4>
+  <p>Created at: <%= team.created_at.to_date %> </p>
   <a href="/teams/<%= team.id  %>/edit">Edit</a>
   <form action="/teams/<%= team.id %>" method="POST">
     <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
