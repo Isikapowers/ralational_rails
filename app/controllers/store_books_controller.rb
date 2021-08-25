@@ -1,7 +1,8 @@
-class BooksController < ApplicationController
+class StoreBooksController < ApplicationController
 
   def index
-    @books = Book.all
+    @store = Store.find(params[:store_id])
+    @books = @store.books
   end
 
   def new
@@ -11,7 +12,8 @@ class BooksController < ApplicationController
     book = Book.new({
       title: params[:book][:title],
       price: params[:book][:price],
-      kids_friendly: params[:book][:kids_friendly]
+      kids_friendly: params[:book][:kids_friendly],
+      store_id: params[:store_id]
     })
 
     book.save
@@ -37,13 +39,13 @@ class BooksController < ApplicationController
 
     book.save
 
-    redirect_to "/books/#{book.book_id}"
+    redirect_to "/stores/:store_id/books/#{book.book_id}"
   end
 
   def destroy
     Book.destroy(params[:book_id])
 
-    redirect_to "/books"
+    redirect_to "/stores/:store_id/books"
   end
 
 end

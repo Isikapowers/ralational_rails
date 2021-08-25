@@ -19,6 +19,8 @@ ActiveRecord::Schema.define(version: 2021_08_25_032028) do
     t.string "title"
     t.float "price"
     t.boolean "kids_friendly"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.bigint "store_id"
     t.index ["store_id"], name: "index_books_on_store_id"
   end
@@ -37,6 +39,8 @@ ActiveRecord::Schema.define(version: 2021_08_25_032028) do
     t.string "name"
     t.boolean "open_on_weekends"
     t.integer "inventory"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "teams", force: :cascade do |t|

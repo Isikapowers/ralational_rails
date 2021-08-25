@@ -1,7 +1,7 @@
 <a href="/books"</a>Book Index</a><br>
 <a href="/stores"</a>Store Index</a>
 
-<form action="/books" method="post">
+<form action="/stores/:store_id/books" method="post">
   <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
   <p>Enter a book title:</p>
   <input type='text' name='book[title]'/><br/>

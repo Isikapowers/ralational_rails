@@ -229,7 +229,7 @@
           null,
           null,
           1,
-          2,
+          0,
           null,
           null,
           null,
@@ -250,24 +250,17 @@
           1,
           1,
           1,
-          null,
-          null,
-          1,
-          1,
-          1,
-          1,
-          1,
-          1,
           1,
           null,
-          1,
-          1,
-          1,
-          1,
-          1,
-          1,
-          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
           null,
+<<<<<<< HEAD
           1,
           1,
           1,
@@ -285,17 +278,45 @@
         ]
       },
       "/Users/kevinmugele/relational_rails/app/models/book.rb": {
-        "lines": [
-          1,
-          1,
+=======
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
           null,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
           null
         ]
       },
-      "/Users/kevinmugele/relational_rails/app/models/application_record.rb": {
+      "/Users/isikapowers/Turing/mod2/projects/relational_rails/spec/models/player_spec.rb": {
+>>>>>>> 79014021a75a01b53d693047e852ec214843cf94
         "lines": [
           1,
+          null,
+          0,
+          0,
+          null
+        ]
+      },
+<<<<<<< HEAD
+      "/Users/kevinmugele/relational_rails/app/models/application_record.rb": {
+=======
+      "/Users/isikapowers/Turing/mod2/projects/relational_rails/spec/rails_helper.rb": {
+>>>>>>> 79014021a75a01b53d693047e852ec214843cf94
+        "lines": [
+          null,
           1,
+          1,
+<<<<<<< HEAD
           null
         ]
       },
@@ -310,8 +331,78 @@
       },
       "/Users/kevinmugele/relational_rails/app/models/player.rb": {
         "lines": [
+=======
+          null,
+          1,
+>>>>>>> 79014021a75a01b53d693047e852ec214843cf94
           1,
           1,
+          null,
+          0,
+          0,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          0,
+          null,
+          0,
+          0,
+          null,
+          0,
+          null,
+          0,
+          null,
+          null,
+          null,
+          null,
+          0,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          0,
+          null,
+          null,
+          0,
+          null,
+          null,
+          null,
+          null,
+          0,
+          0,
+          0,
+          0,
+          null,
           null
         ]
       },
@@ -319,6 +410,7 @@
         "lines": [
           1,
           null,
+<<<<<<< HEAD
           1,
           2,
           null
@@ -329,6 +421,10 @@
           1,
           1,
           1,
+=======
+          0,
+          0,
+>>>>>>> 79014021a75a01b53d693047e852ec214843cf94
           null
         ]
       },
@@ -336,6 +432,7 @@
         "lines": [
           1,
           null,
+<<<<<<< HEAD
           1,
           2,
           null
@@ -345,10 +442,18 @@
         "lines": [
           1,
           1,
+=======
+          0,
+          0,
+>>>>>>> 79014021a75a01b53d693047e852ec214843cf94
           null
         ]
       }
     },
+<<<<<<< HEAD
     "timestamp": 1629895542
+=======
+    "timestamp": 1629899532
+>>>>>>> 79014021a75a01b53d693047e852ec214843cf94
   }
 }

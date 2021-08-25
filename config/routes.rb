@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   get "/", to: "welcome#index"
+
   get "/stores", to: "stores#index"
   get "/stores/new", to: "stores#new"
   post "/stores", to: "stores#create"
@@ -8,15 +9,22 @@ Rails.application.routes.draw do
   get "/stores/:id/edit", to: "stores#edit"
   patch "/stores/:id", to: "stores#update"
   delete "/stores/:id", to: "stores#destroy"
-  #get "/stores/:id/books", to: "stores/:id#show"
 
   get "/books", to: "books#index"
   get "/books/new", to: "books#new"
-  post "books", to: "books#create"
-  get "/books/:id", to: "books#show"
-  get "/books/:id/edit", to: "books#edit"
-  patch "/books/:id", to: "books#update"
-  delete "/books/:id", to: "books#destroy"
+  post "/books", to: "books#create"
+  get "/books/:book_id", to: "books#show"
+  get "/books/:book_id/edit", to: "books#edit"
+  patch "/books/:book_id", to: "books#update"
+  delete "/books/:book_id", to: "books#destroy"
+
+  get "/stores/:store_id/books", to: "store_books#index"
+  get "/stores/:store_id/books/new", to: "store_books#new"
+  post "/stores/:store_id/books", to: "store_books#create"
+  get "/stores/:store_id/books/:book_id", to: "store_books#show"
+  get "/stores/:store_id/books/:book_id/edit", to: "store_books#edit"
+  patch "/stores/:store_id/books/:book_id", to: "store_books#update"
+  delete "/stores/:store_id/books/:book_id", to: "store_books#destroy"
 
   get "/teams", to: "teams#index"
   get "/teams/new", to: "teams#new"
