@@ -12,7 +12,8 @@ class StoreBooksController < ApplicationController
     book = Book.new({
       title: params[:book][:title],
       price: params[:book][:price],
-      kids_friendly: params[:book][:kids_friendly]
+      kids_friendly: params[:book][:kids_friendly],
+      store_id: params[:store_id]
     })
 
     book.save
