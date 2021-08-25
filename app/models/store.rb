@@ -1,3 +1,3 @@
 class Store < ApplicationRecord
-
-end  
+  has_many :books
+end

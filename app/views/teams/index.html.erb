@@ -1,7 +1,9 @@
-<h1>All Basketball Teams</h1>
+<h1>All Basketball Teams</h1><br>
+
+<h3><a href="/teams/new">Add new team</a></h3><br>
 
 <% @teams.each do |team| %>
-  <h3><a href="/teams/<%= team.id %>"><%= team.name %></a></h3>
+  <h4><a href="/teams/<%= team.id %>"><%= team.name %></a></h4>
   <a href="/teams/<%= team.id  %>/edit">Edit</a>
   <form action="/teams/<%= team.id %>" method="POST">
     <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
