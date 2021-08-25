@@ -1,0 +1,21 @@
+<a href="/books"</a>Book Index</a><br>
+<a href="/stores"</a>Store Index</a><br>
+<a href="/teams"</a>Team Index</a><br>
+<a href="/players"</a>Players Index</a><br>
+
+<h1>All Players on Team</h1>
+
+<h2><a href="/teams/:team_id/players/new">Add New Player</a></h2>
+
+<% @players.each do |player| %>
+
+<h1><%= player.name %></h1>
+
+<p>Number: <%= player.number %></p>
+
+<p>Injured: <%= player.injured %></p>
+
+<% end %>
+
+
+<p><a href="/">Go Back Home</a></p>

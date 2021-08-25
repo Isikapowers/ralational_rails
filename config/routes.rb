@@ -26,6 +26,14 @@ Rails.application.routes.draw do
   patch "/stores/:store_id/books/:book_id", to: "store_books#update"
   delete "/stores/:store_id/books/:book_id", to: "store_books#destroy"
 
+  get "/teams/:team_id/players", to: "team_players#index"
+  get "/teams/:team_id/players/new", to: "team_players#new"
+  post "/teams/:team_id/players", to: "team_players#create"
+  get "/teams/:team_id/players/:player_id", to: "team_players#show"
+  get "/teams/:team_id/players/:player_id/edit", to: "team_players#edit"
+  patch "/teams/:team_id/players/:player_id", to: "team_players#update"
+  delete "/teams/:team_id/players/:player_id", to: "team_players#destroy"
+
   get "/teams", to: "teams#index"
   get "/teams/new", to: "teams#new"
   post "/teams", to: "teams#create"

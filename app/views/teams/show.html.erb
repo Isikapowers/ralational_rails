@@ -1,12 +1,16 @@
 <a href="/books"</a>Book Index</a><br>
-<a href="/stores"</a>Store Index</a>
-
-<a href="/teams">Team Index</a>
+<a href="/stores"</a>Store Index</a><br>
+<a href="/teams"</a>Team Index</a><br>
+<a href="/players"</a>Players Index</a><br>
 
 <h1><%= @team.name %></h1>
 
 <p>Total Wins: <%= @team.wins %></p>
 
 <p>Make Playoffs? <%= @team.make_playoffs %></p>
+
+<p>There are <%= @team.players.size %> players on the team!</p>
+
+<a href="/teams/<%= @team.id %>/players">List of Players</a><br>
 
 <a href="/teams/<%= @team.id %>/edit">Edit</a>
