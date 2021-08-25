@@ -1,3 +1,3 @@
 class Player < ApplicationRecord
-
-end 
+  belongs_to :team
+end

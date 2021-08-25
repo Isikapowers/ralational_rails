@@ -1,5 +1,7 @@
 <h1>All Stores</h1>
 
+<h2><a href="/stores/new">New Store</a></h2>
+
 <% @stores.each do |store| %>
   <h3><a href="/stores/<%= store.id %>"><%= store.name %></a></h3>
   <a href="/stores/<%= store.id  %>/edit">Edit</a>
@@ -9,3 +11,5 @@
     <input type="submit" value="delete"/>
   </form>
 <% end %>
+
+<h5><a href="/">Go Back Home</a></h5>
