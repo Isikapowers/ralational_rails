@@ -34,7 +34,6 @@ class PlayersController < ApplicationController
       injured: params[:player][:injured]
       })
     player.save
-
     redirect_to "/players/#{player.id}"
   end
 
