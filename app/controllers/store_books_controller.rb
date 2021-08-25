@@ -1,7 +1,8 @@
-class BooksController < ApplicationController
+class StoreBooksController < ApplicationController
 
   def index
-    @books = Book.all
+    @store = Store.find(params[:store_id])
+    @books = @store.books
   end
 
   def new
@@ -37,13 +38,13 @@ class BooksController < ApplicationController
 
     book.save
 
-    redirect_to "/books/#{book.book_id}"
+    redirect_to "/stores/:store_id/books/#{book.book_id}"
   end
 
   def destroy
     Book.destroy(params[:book_id])
 
-    redirect_to "/books"
+    redirect_to "/stores/:store_id/books"
   end
 
 end

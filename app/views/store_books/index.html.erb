@@ -1,0 +1,16 @@
+<h1>All Books</h1>
+
+<h2><a href="/stores/:store_id/books/new">Create New Book</a></h2>
+
+<% @books.each do |book| %>
+
+<h1><%= book.title %></h1>
+
+<p>Price: <%= book.price %></p>
+
+<p>Kids friendly: <%= book.kids_friendly %></p>
+
+<% end %>
+
+
+<p><a href="/">Go Back Home</a></p>

@@ -6,4 +6,11 @@
 
 <p>Open on weekends: <%= @store.open_on_weekends %></p>
 
-<a href="/stores/<%= @store.id %>/edit">Edit</a>
+<a href="/stores/<%= @store.id %>/edit">Edit</a><br>
+<br>
+
+<p>There are <%= @store.books.size %> books in this store.</p>
+
+<a href="/stores/<%= @store.id %>/books">List of books</a><br>
+
+<a href="/stores/:store_id/books/new">Add new book</a>

@@ -4,6 +4,8 @@ class CreateBooks < ActiveRecord::Migration[5.2]
       t.string :title
       t.float :price
       t.boolean :kids_friendly
+
+      t.timestamps
     end
   end
 end

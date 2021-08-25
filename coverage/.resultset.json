@@ -229,7 +229,7 @@
           null,
           null,
           1,
-          2,
+          0,
           null,
           null,
           null,
@@ -250,52 +250,31 @@
           1,
           1,
           1,
-          null,
-          null,
-          1,
-          1,
-          1,
-          1,
-          1,
-          1,
           1,
           null,
-          1,
-          1,
-          1,
-          1,
-          1,
-          1,
-          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
           null,
-          1,
-          1,
-          1,
-          1,
-          1,
-          1,
-          1,
-          null
-        ]
-      },
-      "/Users/isikapowers/Turing/mod2/projects/relational_rails/app/helpers/application_helper.rb": {
-        "lines": [
-          1,
-          null
-        ]
-      },
-      "/Users/isikapowers/Turing/mod2/projects/relational_rails/app/models/book.rb": {
-        "lines": [
-          1,
-          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
           null,
-          null
-        ]
-      },
-      "/Users/isikapowers/Turing/mod2/projects/relational_rails/app/models/application_record.rb": {
-        "lines": [
-          1,
-          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
           null
         ]
       },
@@ -303,15 +282,86 @@
         "lines": [
           1,
           null,
-          1,
-          2,
+          0,
+          0,
           null
         ]
       },
-      "/Users/isikapowers/Turing/mod2/projects/relational_rails/app/models/player.rb": {
+      "/Users/isikapowers/Turing/mod2/projects/relational_rails/spec/rails_helper.rb": {
         "lines": [
+          null,
           1,
           1,
+          null,
+          1,
+          1,
+          1,
+          null,
+          0,
+          0,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          0,
+          null,
+          0,
+          0,
+          null,
+          0,
+          null,
+          0,
+          null,
+          null,
+          null,
+          null,
+          0,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          0,
+          null,
+          null,
+          0,
+          null,
+          null,
+          null,
+          null,
+          0,
+          0,
+          0,
+          0,
+          null,
           null
         ]
       },
@@ -319,16 +369,8 @@
         "lines": [
           1,
           null,
-          1,
-          2,
-          null
-        ]
-      },
-      "/Users/isikapowers/Turing/mod2/projects/relational_rails/app/models/store.rb": {
-        "lines": [
-          1,
-          1,
-          1,
+          0,
+          0,
           null
         ]
       },
@@ -336,19 +378,12 @@
         "lines": [
           1,
           null,
-          1,
-          2,
-          null
-        ]
-      },
-      "/Users/isikapowers/Turing/mod2/projects/relational_rails/app/models/team.rb": {
-        "lines": [
-          1,
-          1,
+          0,
+          0,
           null
         ]
       }
     },
-    "timestamp": 1629861766
+    "timestamp": 1629899532
   }
 }
