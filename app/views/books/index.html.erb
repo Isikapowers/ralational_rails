@@ -15,7 +15,8 @@
 
 <nav class="container">
 
-<h1>All Books</h1><br>
+<h1>All Kids Friendly Books</h1><br>
+
 <% @books.each do |book| %>
   <h4><a href="/books/<%= book.id %>"><%= book.title %></a></h4>
   <a href="/books/<%= book.id  %>/edit"><button type="submit" class="btn btn-secondary">EDIT</button></a>
@@ -26,6 +27,6 @@
   </form><br>
 <% end %>
 
-</nav><br>
+<%= link_to "Go Back Home", "/" %>
 
-<p><a href="/"</a>Go Back Home</p>
+</nav><br>

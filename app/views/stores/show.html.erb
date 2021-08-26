@@ -18,19 +18,14 @@
 <a href="/stores">All Stores</a><br><br>
 
 <h1><%= @store.name %></h1>
-
 <p>Inventory: <%= @store.inventory %></p>
-
 <p>Open on weekends: <%= @store.open_on_weekends %></p>
-
 <a href="/stores/<%= @store.id %>/edit"><button type="submit" class="btn btn-info">EDIT</button></a><br>
 <br>
-
 <p>There are <%= @store.books.size %> books in this store.</p>
-
 <a href="/stores/<%= @store.id %>/books">List of books</a><br>
+<a href="/stores/<%= @store.id %>/books/new">Add new book</a><br>
 
-<a href="/stores/:store_id/books/new">Add new book</a>
+<%= link_to "Go Back Home", "/" %>
+
 </nav><br>
-
-<p><a href="/"</a>Go Back Home</p>

@@ -23,7 +23,8 @@
 
 <p>Kids friendly: <%= @book.kids_friendly %></p>
 
-<a href="/books/<%= @book.id %>/edit"><button type="submit" class="btn btn-secondary">EDIT</button></a>
-</nav><br>
+<a href="/books/<%= @book.id %>/edit"><button type="submit" class="btn btn-secondary">EDIT</button></a><br>
 
-<p><a href="/"</a>Go Back Home</p>
+<%= link_to "Go Back Home", "/" %>
+
+</nav><br>

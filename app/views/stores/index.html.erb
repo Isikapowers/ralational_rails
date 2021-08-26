@@ -14,12 +14,13 @@
 </nav><br>
 
 <nav class="container">
+
 <h1>All Stores</h1><br>
 
-<h2><a href="/stores/new">Add New Store</a></h2><br>
+<%= link_to "Add New Store", "/stores/new" %><br><br>
 
 <% @stores.each do |store| %>
-  <h3><a href="/stores/<%= store.id %>"><%= store.name %></a></h3>
+  <h3><%= link_to store.name, "/stores/#{store.id}" %></h3>
   <p>Created at: <%= store.created_at.to_date %></p>
   <a href="/stores/<%= store.id  %>/edit"><button type="submit" class="btn btn-secondary">EDIT</button></a>
   <form action="/stores/<%= store.id %>" method="POST">
@@ -27,7 +28,8 @@
     <input type="hidden" name="_method" value="DELETE">
     <button type="submit" class="btn btn-danger">DELETE</button>
   </form><br>
-<% end %>
-</nav><br>
+<% end %><br>
 
-<p><a href="/">Go Back Home</a></p>
+<%= link_to "Go Back Home", "/" %>
+
+</nav><br>

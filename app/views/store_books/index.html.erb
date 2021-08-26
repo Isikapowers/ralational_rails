@@ -15,17 +15,17 @@
 
 <nav class="container">
 
-<h1><%= link_to "All Books", "/books"%></h1><br>
+<h1><%= link_to "Create New Book", "/stores/#{@store.id}/books/new" %></h1><br>
 
-<h2><%= link_to "Create New Book", "/stores/#{@store.id}/books/new"%></h2><br>
+<%= link_to "List of Only Kids Friendly Books", "/books" %><br><br>
 
 <% @books.each do |book| %>
 <h3><%= book.title %></h3>
 <p>Price: <%= book.price %></p>
 <p>Kids friendly: <%= book.kids_friendly %></p>
-<a href="/stores/<%= @store.id %>/books/<%= book.id %>/edit"><button type="submit" class="btn btn-secondary">EDIT</button></a><br>
+<a href="/stores/<%= @store.id %>/books/<%= book.id %>/edit"><button type="submit" class="btn btn-secondary">EDIT</button></a><br><br>
 <% end %><br>
 
-</nav><br>
+<%= link_to "Go Back Home", "/" %>
 
-<p><a href="/">Go Back Home</a></p>
+</nav><br>

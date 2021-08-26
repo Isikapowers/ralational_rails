@@ -49,5 +49,4 @@ class StoreBooksController < ApplicationController
     redirect_to "/stores/#{store.id}/books"
   end
 
-
 end

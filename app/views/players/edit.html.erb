@@ -11,7 +11,9 @@
       <a class="nav-link active" href="/players">Players</a>
     </div>
   </div>
-</nav>
+</nav><br>
+
+<nav class="container">
 
 <form action="/players/<%= @player.id %>" method="post">
   <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
@@ -24,4 +26,8 @@
   <p>Is the player injured?:</p>
   <input type='checkbox' name='player[injured]' value="<%= @player.injured %>"/><br/>
   <input type='submit'/>
-</form>
+</form><br>
+
+<%= link_to "Go Back Home", "/" %>
+
+</nav>

@@ -1,20 +1,18 @@
 class StoresController < ApplicationController
+
   def index
     @stores = Store.all
   end
 
   def new
-
   end
 
   def create
-    store = Store.new({
+    store = Store.create({
       name: params[:name],
       inventory: params[:inventory],
       open_on_weekends: params[:open_on_weekends]
       })
-
-    store.save
 
     redirect_to "/stores"
   end

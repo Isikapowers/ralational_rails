@@ -14,6 +14,7 @@
 </nav><br>
 
 <nav class="container">
+
 <%= form_with url: "/stores/#{@store.id}", method: :patch, local: true do |form| %>
   <%= form.label :name %>
   <%= form.text_field :name %><br>
@@ -22,7 +23,8 @@
   <%= form.label :open_on_weekends, "Open on weekends:" %>
   <%= form.check_box :open_on_weekends, {}, true, false %><br><br>
   <button type="submit" class="btn btn-primary">SUBMIT</button>
-<% end %>
-</nav><br>
+<% end %><br>
 
-<p><a href="/"</a>Go Back Home</p>
+<%= link_to "Go Back Home", "/" %>
+
+</nav><br>

@@ -14,8 +14,7 @@ class TeamPlayersController < ApplicationController
     player = team.players.create({
       name: params[:name],
       number: params[:number],
-      injured: params[:injured],
-      team_id: params[:team_id]
+      injured: params[:injured]
     })
 
     redirect_to "/teams/#{team.id}/players"
@@ -33,10 +32,10 @@ class TeamPlayersController < ApplicationController
     team = Team.find(params[:team_id])
     player = team.players.find(params[:player_id])
     player.update({
-      title: params[:book][:title],
-      price: params[:book][:price],
-      kids_friendly: params[:book][:kids_friendly]
-      })
+      name: params[:name],
+      number: params[:number],
+      injured: params[:injured]
+    })
 
     player.save
 
