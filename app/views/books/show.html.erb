@@ -11,9 +11,11 @@
       <a class="nav-link" href="/players">Players</a>
     </div>
   </div>
-</nav>
+</nav><br>
 
-<a href="/books">Book Info</a>
+<nav class="container">
+
+<%= link_to "All Books", "/books" %>
 
 <h1><%= @book.title %></h1>
 
@@ -22,3 +24,7 @@
 <p>Kids friendly: <%= @book.kids_friendly %></p>
 
 <a href="/books/<%= @book.id %>/edit"><button type="submit" class="btn btn-secondary">EDIT</button></a>
+
+</nav><br>
+
+<p><a href="/"</a>Go Back Home</p>
