@@ -63,4 +63,12 @@ RSpec.describe 'the players index page' do
 
     expect(current_path).to eq("/players/#{kevin.id}/edit")
   end
+
+  it 'allows you to see a specific player and their attributes' do
+    visit "/players/#{@kevin.id}"
+
+    expect(page).to have_content("Kevin Durant")
+    expect(page).to have_content("Number: 25")
+    expect(page).to have_content("Are they injured?: false")
+  end
 end

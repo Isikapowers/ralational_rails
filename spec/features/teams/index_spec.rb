@@ -1,8 +1,9 @@
 require 'rails_helper'
 
-RSpec.describe 'the players index page' do
+RSpec.describe 'the teams index page' do
   before :each do
     @team = Team.create!(name: "New York Knicks", make_playoffs: true, wins: 50)
+    @team_2 = Team.create!(name: "Nets", make_playoffs: true, wins: 25)
     @kevin = @team.players.create!(name: "Kevin Durant", number: 25, injured: false)
     @lebron = @team.players.create!(name: "Lebron James", number: 11, injured: false)
   end
@@ -39,20 +40,24 @@ RSpec.describe 'the players index page' do
     expect(current_path).to eq("/players")
   end
 
-  it 'allows you to edit player' do
-    visit "/players/#{@kevin.id}/edit"
+  it 'shows all the teams on index page' do
+    visit "/teams"
 
-    expect(page).to have_content("Update player name:")
-    expect(page).to have_content("Enter player number:")
-    expect(page).to have_content("Is the player injured?")
+    expect(page).to have_content("New York Knicks")
+    expect(page).to have_content("Nets")
   end
 
-  xit 'allows you to click on submit player' do
-    visit "/players/#{@kevin.id}/edit"
+  it 'shows the specific team and its attributes when going to team/team_id' do
+    visit "/teams/#{@team.id}"
 
-    click_on "Submit"
-
-    expect(current_path).to eq("/players/#{@kevin.id}")
+    expect(page).to have_content("New York Knicks")
+    expect(page).to have_content("Wins: 50")
+    expect(page).to have_content("Make Playoffs? true")
   end
 
+  it 'lets you click a link to create a new teama nd brings you to teams/new' do
+    visit "/teams"
+
+    click_on "Add new team"
+  end
 end
