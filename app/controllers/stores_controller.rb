@@ -9,9 +9,9 @@ class StoresController < ApplicationController
 
   def create
     store = Store.new({
-      name: params[:store][:name],
-      inventory: params[:store][:inventory],
-      open_on_weekends: params[:store][:open_on_weekends]
+      name: params[:name],
+      inventory: params[:inventory],
+      open_on_weekends: params[:open_on_weekends]
       })
 
     store.save
@@ -30,9 +30,9 @@ class StoresController < ApplicationController
   def update
     store = Store.find(params[:id])
     store.update({
-      name: params[:store][:name],
-      inventory: params[:store][:inventory],
-      open_on_weekends: params[:store][:open_on_weekends]
+      name: params[:name],
+      inventory: params[:inventory],
+      open_on_weekends: params[:open_on_weekends]
       })
 
     store.save

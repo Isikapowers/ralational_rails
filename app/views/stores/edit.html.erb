@@ -11,14 +11,18 @@
       <a class="nav-link" href="/players">Players</a>
     </div>
   </div>
-</nav>
+</nav><br>
 
-<%= form_with url: "/stores/#{@store.id}/books", method: :post, local: true do |form| %>
-  <%= form.label :title %>
-  <%= form.text_field :title %><br>
-  <%= form.label :price %>
-  <%= form.number_field :price %><br>
-  <%= form.label :kids_friendly, 'Kids Friendly:' %>
-  <%= form.check_box :kids_friendly, {}, true, false %><br><br>
+<nav class="container">
+<%= form_with url: "/stores/#{@store.id}", method: :patch, local: true do |form| %>
+  <%= form.label :name %>
+  <%= form.text_field :name %><br>
+  <%= form.label :inventory %>
+  <%= form.number_field :inventory %><br>
+  <%= form.label :open_on_weekends, "Open on weekends:" %>
+  <%= form.check_box :open_on_weekends, {}, true, false %><br><br>
   <button type="submit" class="btn btn-primary">SUBMIT</button>
 <% end %>
+</nav><br>
+
+<p><a href="/"</a>Go Back Home</p>

@@ -11,8 +11,9 @@
       <a class="nav-link" href="/players">Players</a>
     </div>
   </div>
-</nav>
+</nav><br>
 
+<nav class="container">
 <%= form_with url: "/books", method: :post, local: true do |form| %>
   <%= form.label :title %>
   <%= form.text_field :title %><br>
@@ -22,3 +23,6 @@
   <%= form.check_box :kids_friendly, {}, true, false %><br><br>
   <button type="submit" class="btn btn-primary">SUBMIT</button>
 <% end %>
+</nav><br>
+
+<p><a href="/"</a>Go Back Home</p>

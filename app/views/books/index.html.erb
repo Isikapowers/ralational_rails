@@ -11,8 +11,11 @@
       <a class="nav-link" href="/players">Players</a>
     </div>
   </div>
-</nav>
+</nav><br>
 
+<nav class="container">
+
+<h1>All Books</h1><br>
 <% @books.each do |book| %>
   <h4><a href="/books/<%= book.id %>"><%= book.title %></a></h4>
   <a href="/books/<%= book.id  %>/edit"><button type="submit" class="btn btn-secondary">EDIT</button></a>
@@ -21,7 +24,8 @@
     <input type="hidden" name="_method" value="DELETE">
     <button type="submit" class="btn btn-danger">DELETE</button>
   </form><br>
-
 <% end %>
+
+</nav><br>
 
 <p><a href="/"</a>Go Back Home</p>
