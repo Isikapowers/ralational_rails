@@ -1,17 +1,24 @@
-<a href="/books"</a>Book Index</a><br>
-<a href="/stores"</a>Store Index</a><br>
-<a href="/teams"</a>Team Index</a><br>
-<a href="/players"</a>Players Index</a><br>
+<nav class="navbar navbar-expand-lg navbar-light bg-info">
+  <a class="navbar-brand" href="/">Home</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+    <div class="navbar-nav">
+      <a class="nav-link" href="/stores">Book Stores<span class="sr-only">(current)</span></a>
+      <a class="nav-link active" href="/books">Books</a>
+      <a class="nav-link" href="/teams">Basketball Teams</a>
+      <a class="nav-link" href="/players">Players</a>
+    </div>
+  </div>
+</nav>
 
-<form action="/books/<%= @book.id %>" method="post">
-  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
-  <input type="hidden" name="_method" value="PATCH" />
-  <p>Edit</p>
-  <p>Enter a new book title:</p>
-  <input type='text' name='book[title]' value="<%= @book.title %>"/><br/>
-  <p>Enter a new price:</p>
-  <input type="float" name='book[price]' value="<%= @book.price %>"/><br/>
-  <p>Kids friendly book:</p>
-  <input type="checkbox" name="book[kids_friendly]" value="><%= @book.kids_friendly %>"/><br/>
-  <input type='submit'/>
-</form>
+<%= form_with url: "/books/#{@book.id}", method: :post, local: true do |form| %>
+  <%= form.label :title %>
+  <%= form.text_field :title %><br>
+  <%= form.label :price %>
+  <%= form.number_field :price %><br>
+  <%= form.label :kids_friendly, 'Kids Friendly:' %>
+  <%= form.check_box :kids_friendly, {}, true, false %><br><br>
+  <button type="submit" class="btn btn-primary">SUBMIT</button>
+<% end %>

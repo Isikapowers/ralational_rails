@@ -14,7 +14,7 @@
       <img src="./assets/0.12.3/loading.gif" alt="loading"/>
     </div>
     <div id="wrapper" class="hide">
-      <div class="timestamp">Generated <abbr class="timeago" title="2021-08-25T16:28:27-06:00">2021-08-25T16:28:27-06:00</abbr></div>
+      <div class="timestamp">Generated <abbr class="timeago" title="2021-08-25T16:43:37-06:00">2021-08-25T16:43:37-06:00</abbr></div>
       <ul class="group_tabs"></ul>
 
       <div id="content">
@@ -23,14 +23,14 @@
     <span class="group_name">All Files</span>
     (<span class="covered_percent">
       <span class="green">
-  90.09%
+  91.15%
 </span>
 
      </span>
      covered at
      <span class="covered_strength">
        <span class="red">
-         0.94
+         0.99
        </span>
     </span> hits/line
     )
@@ -39,15 +39,15 @@
   <a name="AllFiles"></a>
 
   <div>
-    <b>19</b> files in total.
+    <b>20</b> files in total.
   </div>
 
   <div class="t-line-summary">
-    <b>111</b> relevant lines,
-    <span class="green"><b>100</b> lines covered</span> and
-    <span class="red"><b>11</b> lines missed. </span>
+    <b>113</b> relevant lines,
+    <span class="green"><b>103</b> lines covered</span> and
+    <span class="red"><b>10</b> lines missed. </span>
     (<span class="green">
-  90.09%
+  91.15%
 </span>
 )
   </div>
@@ -83,12 +83,12 @@
         
           <tr class="t-file">
             <td class="strong t-file__name"><a href="#14aa391868bf869ada2fa78a5dc72d0e0084ffab" class="src_link" title="app/controllers/stores_controller.rb">app/controllers/stores_controller.rb</a></td>
-            <td class="red strong cell--number t-file__coverage">45.00 %</td>
+            <td class="red strong cell--number t-file__coverage">50.00 %</td>
             <td class="cell--number">49</td>
             <td class="cell--number">20</td>
-            <td class="cell--number">9</td>
-            <td class="cell--number">11</td>
-            <td class="cell--number">0.45</td>
+            <td class="cell--number">10</td>
+            <td class="cell--number">10</td>
+            <td class="cell--number">0.55</td>
             
           </tr>
         
@@ -115,13 +115,24 @@
           </tr>
         
           <tr class="t-file">
+            <td class="strong t-file__name"><a href="#15039d0efd3993071d6e47a62f99cedd55643535" class="src_link" title="app/models/book.rb">app/models/book.rb</a></td>
+            <td class="green strong cell--number t-file__coverage">100.00 %</td>
+            <td class="cell--number">4</td>
+            <td class="cell--number">2</td>
+            <td class="cell--number">2</td>
+            <td class="cell--number">0</td>
+            <td class="cell--number">1.00</td>
+            
+          </tr>
+        
+          <tr class="t-file">
             <td class="strong t-file__name"><a href="#43c3a468126b36188cf5c4ec5624d3c3a530b9b0" class="src_link" title="app/models/store.rb">app/models/store.rb</a></td>
             <td class="green strong cell--number t-file__coverage">100.00 %</td>
             <td class="cell--number">6</td>
             <td class="cell--number">3</td>
             <td class="cell--number">3</td>
             <td class="cell--number">0</td>
-            <td class="cell--number">2.00</td>
+            <td class="cell--number">3.33</td>
             
           </tr>
         
@@ -354,7 +365,7 @@
     <h3>app/controllers/stores_controller.rb</h3>
     <h4>
       <span class="red">
-  45.0%
+  50.0%
 </span>
 
       lines covered
@@ -364,8 +375,8 @@
 
     <div class="t-line-summary">
       <b>20</b> relevant lines.
-      <span class="green"><b>9</b> lines covered</span> and
-      <span class="red"><b>11</b> lines missed.</span>
+      <span class="green"><b>10</b> lines covered</span> and
+      <span class="red"><b>10</b> lines missed.</span>
     </div>
 
     
@@ -618,8 +629,8 @@
         </div>
       
         <div>
-          <li class="missed" data-hits="0" data-linenumber="23">
-            
+          <li class="covered" data-hits="2" data-linenumber="23">
+            <span class="hits">2</span>
             
 
             
@@ -1036,6 +1047,81 @@
 </div>
 
       
+        <div class="source_table" id="15039d0efd3993071d6e47a62f99cedd55643535">
+  <div class="header">
+    <h3>app/models/book.rb</h3>
+    <h4>
+      <span class="green">
+  100.0%
+</span>
+
+      lines covered
+    </h4>
+
+    
+
+    <div class="t-line-summary">
+      <b>2</b> relevant lines.
+      <span class="green"><b>2</b> lines covered</span> and
+      <span class="red"><b>0</b> lines missed.</span>
+    </div>
+
+    
+
+  </div>
+
+  <pre>
+    <ol>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="1">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">class Book &lt; ApplicationRecord</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="2">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">  belongs_to :store</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="3">
+            
+            
+
+            
+
+            <code class="ruby">  #validates :kids_friendly: true</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="4">
+            
+            
+
+            
+
+            <code class="ruby">end</code>
+          </li>
+        </div>
+      
+    </ol>
+  </pre>
+</div>
+
+      
         <div class="source_table" id="43c3a468126b36188cf5c4ec5624d3c3a530b9b0">
   <div class="header">
     <h3>app/models/store.rb</h3>
@@ -1096,8 +1182,8 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="4" data-linenumber="4">
-            <span class="hits">4</span>
+          <li class="covered" data-hits="8" data-linenumber="4">
+            <span class="hits">8</span>
             
 
             

@@ -1,17 +1,26 @@
-<a href="/books"</a>Book Index</a><br>
-<a href="/stores"</a>Store Index</a><br>
-<a href="/teams"</a>Team Index</a><br>
-<a href="/players"</a>Players Index</a><br>
+<nav class="navbar navbar-expand-lg navbar-light bg-info">
+  <a class="navbar-brand" href="/">Home</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+    <div class="navbar-nav">
+      <a class="nav-link" href="/stores">Book Stores<span class="sr-only">(current)</span></a>
+      <a class="nav-link" href="/books">Books</a>
+      <a class="nav-link active" href="/teams">Basketball Teams</a>
+      <a class="nav-link" href="/players">Players</a>
+    </div>
+  </div>
+</nav>
 
-<form action="/players" method="post">
-  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
-  <p>Enter a new player:</p>
-  <input type='text' name='player[name]'/><br/>
-  <p>Enter their number:</p>
-  <input type='integer' name='player[number]'/><br/>
-  <p>Are they injured?</p>
-  <input type='checkbox' name='player[injured]'/><br/>
-  <input type="hidden" name="team_id" value="params[:id]">
-  <input type='submit'/>
+<%= form_with url: "/teams/#{@team.id}/players", method: :post, local: true do |form| %>
+  <%= form.label :name %>
+  <%= form.text_field :name %><br>
+  <%= form.label :number %>
+  <%= form.number_field :number%><br>
+  <%= form.label :injured, 'Check if injured:' %>
+  <%= form.check_box :injured, {}, true, false %><br><br>
+  <button type="submit" class="btn btn-primary">SUBMIT</button>
+<% end %>
 
 </form>
