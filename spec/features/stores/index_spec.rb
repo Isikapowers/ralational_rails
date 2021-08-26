@@ -24,4 +24,22 @@ RSpec.describe "Stores Index Page" do
     expect(page).to have_content(@store2.name)
     expect(page).to_not have_content(@store1.name)
   end
+
+  describe "Links/Button" do
+    it "can go back home" do
+      visit "/stores"
+
+      click_link("Go Back Home")
+
+      expect(current_path).to eq("/")
+    end
+
+    it "can display a link to take to #new" do
+      visit "/stores"
+
+      click_on "Add New Store"
+
+      expect(current_path).to eq("/stores/new")
+    end
+  end
 end
