@@ -6,19 +6,18 @@ class StoreBooksController < ApplicationController
   end
 
   def new
+    @store = Store.find(params[:store_id])
   end
 
   def create
-    book = Book.new({
-      title: params[:book][:title],
-      price: params[:book][:price],
-      kids_friendly: params[:book][:kids_friendly],
-      store_id: params[:store_id]
+    store = Store.find(params[:store_id])
+    book = store.books.create({
+      title: params[:title],
+      price: params[:price],
+      kids_friendly: params[:kids_friendly]
     })
 
-    book.save
-
-    redirect_to "/stores/:store_id/books"
+    redirect_to "/stores/#{store.id}/books"
   end
 
   def show
@@ -30,7 +29,8 @@ class StoreBooksController < ApplicationController
   end
 
   def update
-    book = Book.find(params[:book_id])
+    store = Store.find(params[:store_id])
+    book = store.Book.find(params[:book_id])
     book.update({
       title: params[:book][:title],
       price: params[:book][:price],
@@ -39,13 +39,14 @@ class StoreBooksController < ApplicationController
 
     book.save
 
-    redirect_to "/stores/:store_id/books/#{book.book_id}"
+    redirect_to "/stores/#{store.id}/books/#{book.id}"
   end
 
   def destroy
+    store = Store.find(params[:store_id])
     Book.destroy(params[:book_id])
 
-    redirect_to "/stores/:store_id/books"
+    redirect_to "/stores/#{store.id}/books"
   end
 
 end

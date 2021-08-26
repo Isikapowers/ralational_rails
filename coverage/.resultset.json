@@ -305,7 +305,7 @@
           1,
           1,
           null,
-          4,
+          8,
           null,
           null
         ]
@@ -341,7 +341,7 @@
           null,
           null,
           1,
-          0,
+          2,
           null,
           null,
           1,
@@ -375,8 +375,16 @@
           1,
           null
         ]
+      },
+      "/Users/isikapowers/Turing/mod2/projects/relational_rails/app/models/book.rb": {
+        "lines": [
+          1,
+          1,
+          null,
+          null
+        ]
       }
     },
-    "timestamp": 1629930507
+    "timestamp": 1629931417
   }
 }

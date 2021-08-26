@@ -1,15 +1,25 @@
-<a href="/books"</a>Book Index</a><br>
-<a href="/stores"</a>Store Index</a><br>
-<a href="/teams"</a>Team Index</a><br>
-<a href="/players"</a>Players Index</a><br>
+<nav class="navbar navbar-expand-lg navbar-light bg-info">
+  <a class="navbar-brand" href="/">Home</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+    <div class="navbar-nav">
+      <a class="nav-link" href="/stores">Book Stores<span class="sr-only">(current)</span></a>
+      <a class="nav-link active" href="/books">Books</a>
+      <a class="nav-link" href="/teams">Basketball Teams</a>
+      <a class="nav-link" href="/players">Players</a>
+    </div>
+  </div>
+</nav>
 
 <% @books.each do |book| %>
   <h4><a href="/books/<%= book.id %>"><%= book.title %></a></h4>
-  <a href="/books/<%= book.id  %>/edit">Edit</a>
+  <a href="/books/<%= book.id  %>/edit"><button type="submit" class="btn btn-secondary">EDIT</button></a>
   <form action="/books/<%= book.id %>" method="POST">
     <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
     <input type="hidden" name="_method" value="DELETE">
-    <input type="submit" value="delete"/>
+    <button type="submit" class="btn btn-danger">DELETE</button>
   </form><br>
 
 <% end %>
