@@ -30,7 +30,7 @@ class StoreBooksController < ApplicationController
 
   def update
     store = Store.find(params[:store_id])
-    book = store.Book.find(params[:book_id])
+    book = store.books.find(params[:book_id])
     book.update({
       title: params[:book][:title],
       price: params[:book][:price],
@@ -48,5 +48,6 @@ class StoreBooksController < ApplicationController
 
     redirect_to "/stores/#{store.id}/books"
   end
+
 
 end

@@ -11,7 +11,7 @@ class TeamPlayersController < ApplicationController
 
   def create
     team = Team.find(params[:team_id])
-    player = team.players.create{
+    player = team.players.create({
       name: params[:name],
       number: params[:number],
       injured: params[:injured],
