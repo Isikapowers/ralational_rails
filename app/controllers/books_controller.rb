@@ -44,4 +44,10 @@ class BooksController < ApplicationController
     redirect_to "/books"
   end
 
+  # private
+  #
+  # def book_params
+  #   params.require(:book).permit(:title, :price, :kids_friendly)
+  # end
+
 end

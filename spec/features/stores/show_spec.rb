@@ -3,6 +3,10 @@ require "rails_helper"
 RSpec.describe "Stores Show Page" do
   before :each do
     @store1 = Store.create!(name: "Barnes and Noble", open_on_weekends: true, inventory: 4739)
+
+    @book1 = @store1.books.create!(title: "Dino Potty Book", price: 13.99, kids_friendly: true)
+    @book2 = @store1.books.create!(title: "I Love You to The Moon and Back", price: 29.89, kids_friendly: true)
+
     @store2 = Store.create!(name: "50/50 Book Store", open_on_weekends: false, inventory: 638)
   end
 
@@ -60,7 +64,7 @@ RSpec.describe "Stores Show Page" do
     it "can take user to the books of that store page" do
       visit "/stores/#{@store1.id}"
 
-      click_on "List of books"
+      click_on "List of Books"
 
       expect(current_path).to eq("/stores/#{@store1.id}/books")
     end
@@ -68,7 +72,7 @@ RSpec.describe "Stores Show Page" do
     it "can take user to the books of that store page" do
       visit "/stores/#{@store2.id}"
 
-      click_on "List of books"
+      click_on "List of Books"
 
       expect(current_path).to eq("/stores/#{@store2.id}/books")
     end

@@ -35,17 +35,55 @@ RSpec.describe "Store Book Index Page" do
     expect(page).to_not have_content(@harry.price)
   end
 
-  it "links you to books" do
-    visit "/stores/#{@store1.id}/books"
-
-    click_on("Players")
-
-    expect(current_path).to eq("/players")
-  end
-
-  describe "Links/Buttons" do
+  describe "Links/Buttons in Iteration 1" do
     it "can go back home" do
       visit "/books/"
+
+      click_link("Go Back Home")
+
+      expect(current_path).to eq("/")
+    end
+
+    it "can take user to stores page from every page" do
+      visit "/stores/#{@store1.id}/books"
+
+      click_link "Book Stores"
+
+      expect(current_path).to eq("/stores")
+    end
+  end
+
+  describe "Links/Buttons in Iteration 2" do
+    it "can take user to add new book to that store page with form" do
+      visit "/stores/#{@store1.id}"
+
+      click_link "Add New Book"
+
+      expect(current_path).to eq("/stores/#{@store1.id}/books/new")
+
+      expect(page).to have_field(:title)
+      expect(page).to have_field(:price)
+      expect(page).to have_field(:kids_friendly)
+    end
+
+    it "can let user fill out the form and submit" do
+      visit "/stores/#{@store1.id}/books/new"
+
+      fill_in("Title", with: "Hello Kitty")
+      fill_in("Price", with: 12.99)
+      # check("Kids friendly", with: true)
+
+      click_on "SUBMIT"
+      book_id = Book.last
+
+      expect(current_path).to eq("/stores/#{@store1.id}/books")
+      expect(page).to have_content("Hello Kitty")
+      # expect(page).to have_content("8888")
+      # expect(page).to have_content("Open_on_weekends: true")
+    end
+
+    it "can go back home from any page" do
+      visit "/books/new"
 
       click_link("Go Back Home")
 

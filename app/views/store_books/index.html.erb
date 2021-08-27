@@ -19,11 +19,22 @@
 
 <%= link_to "List of Only Kids Friendly Books", "/books" %><br><br>
 
+<% if @books_ordered %>
+<%= link_to "View Alphabetical Order", "/stores/#{@store.id}/books" %><br><br>
+<% @books_ordered.each do |book| %>
+<h3><%= book.title %></h3>
+<p>Price: <%= book.price %></p>
+<p>Kids friendly: <%= book.kids_friendly %></p>
+<a href="/stores/<%= @store.id %>/books/<%= book.id %>/edit"><button type="submit" class="btn btn-secondary">EDIT</button></a><br><br>
+<% end %>
+
+<% else %>
 <% @books.each do |book| %>
 <h3><%= book.title %></h3>
 <p>Price: <%= book.price %></p>
 <p>Kids friendly: <%= book.kids_friendly %></p>
 <a href="/stores/<%= @store.id %>/books/<%= book.id %>/edit"><button type="submit" class="btn btn-secondary">EDIT</button></a><br><br>
+<% end %>
 <% end %><br>
 
 <%= link_to "Go Back Home", "/" %>

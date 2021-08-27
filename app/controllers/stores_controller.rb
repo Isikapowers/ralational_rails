@@ -44,4 +44,10 @@ class StoresController < ApplicationController
     redirect_to "/stores"
   end
 
+  # private
+  #
+  # def store_params
+  #   params.require(:store).permit(:name, :inventory, :open_on_weekends)
+  # end
+
 end

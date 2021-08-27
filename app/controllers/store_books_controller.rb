@@ -3,6 +3,7 @@ class StoreBooksController < ApplicationController
   def index
     @store = Store.find(params[:store_id])
     @books = @store.books
+    @books_ordered = @books.alphabetical_order
   end
 
   def new
@@ -21,20 +22,22 @@ class StoreBooksController < ApplicationController
   end
 
   def show
-    @book = Book.find(params[:book_id])
+    @store = Store.find(params[:store_id])
+    @book = @store.books.find(params[:book_id])
   end
 
   def edit
-    @book = Book.find(params[:book_id])
+    @store = Store.find(params[:store_id])
+    @book = @store.books.find(params[:book_id])
   end
 
   def update
     store = Store.find(params[:store_id])
     book = store.books.find(params[:book_id])
     book.update({
-      title: params[:book][:title],
-      price: params[:book][:price],
-      kids_friendly: params[:book][:kids_friendly]
+      title: params[:title],
+      price: params[:price],
+      kids_friendly: params[:kids_friendly]
       })
 
     book.save
