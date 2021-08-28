@@ -10,7 +10,7 @@ RSpec.describe 'the players index page' do
   it 'links you to book index' do
     visit '/players'
 
-    click_on "Book Index"
+    click_on "Books"
 
     expect(current_path).to eq("/books")
   end
@@ -18,7 +18,7 @@ RSpec.describe 'the players index page' do
   it 'links you to store index' do
     visit '/players'
 
-    click_on "Store Index"
+    click_on "Book Stores"
 
     expect(current_path).to eq("/stores")
   end
@@ -26,7 +26,7 @@ RSpec.describe 'the players index page' do
   it 'links you to team index' do
     visit '/players'
 
-    click_on "Team Index"
+    click_on "Teams"
 
     expect(current_path).to eq("/teams")
   end
@@ -34,7 +34,7 @@ RSpec.describe 'the players index page' do
   it 'links you to book index' do
     visit '/players'
 
-    click_on "Players Index"
+    click_on "Players"
 
     expect(current_path).to eq("/players")
   end
@@ -47,7 +47,7 @@ RSpec.describe 'the players index page' do
     expect(page).to have_content("Is the player injured?")
   end
 
-  xit 'allows you to click on submit player' do
+  it 'allows you to click on submit player' do
     visit "/players/#{@kevin.id}/edit"
 
     click_on "Submit"

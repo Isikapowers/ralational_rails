@@ -11,31 +11,43 @@
       <a class="nav-link" href="/players">Players</a>
     </div>
   </div>
+</nav>
+
+<nav class="navbar navbar-expand-lg navbar-light bg-secondary">
+  <a class="navbar-brand" href="/stores">List of Stores</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+    <div class="navbar-nav">
+      <a class="nav-link" href="/books">List of Only Kids Friendly Books<span class="sr-only">(current)</span></a>
+      <a class="nav-link" href="/stores/<%= @store.id %>/books/new">Add New Book</a>
+    </div>
+  </div>
 </nav><br>
 
 <nav class="container">
 
-<h1><%= link_to "Create New Book", "/stores/#{@store.id}/books/new" %></h1><br>
+<h1><%= @store.name %></h1><br>
 
-<%= link_to "List of Only Kids Friendly Books", "/books" %><br><br>
+<%= link_to "View Alphabetical Order", "/stores/#{@store.id}/books?order=title" %><br><br>
+<h3>Search by Price:</h3>
+  <%= form_tag url: "/stores/#{@store.id}/books?price=Search", method: :get do %>
+  <%= text_field_tag(:search_by_price, params[:search_by_price]) %>
+  <%= submit_tag ("Search") %>
+  <% end %><br>
+    <% @books.each do |book| %>
+    <h3><%= book.title %></h3>
+    <p>Price: <%= book.price %></p>
+    <p>Kids friendly: <%= book.kids_friendly %></p>
+    <a href="/stores/<%= @store.id %>/books/<%= book.id %>/edit"><button type="submit" class="btn btn-secondary">EDIT</button></a>
+  <form action="/stores/<%= @store.id %>/books/<%= book.id %>" method="POST">
+    <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+    <input type="hidden" name="_method" value="DELETE">
+    <button type="submit" data-confirm="Are you sure you want to delete?" class="btn btn-danger">DELETE</button><br>
+  </form><br>
+<% end  %>
 
-<% if @books_ordered %>
-<%= link_to "View Alphabetical Order", "/stores/#{@store.id}/books" %><br><br>
-<% @books_ordered.each do |book| %>
-<h3><%= book.title %></h3>
-<p>Price: <%= book.price %></p>
-<p>Kids friendly: <%= book.kids_friendly %></p>
-<a href="/stores/<%= @store.id %>/books/<%= book.id %>/edit"><button type="submit" class="btn btn-secondary">EDIT</button></a><br><br>
-<% end %>
-
-<% else %>
-<% @books.each do |book| %>
-<h3><%= book.title %></h3>
-<p>Price: <%= book.price %></p>
-<p>Kids friendly: <%= book.kids_friendly %></p>
-<a href="/stores/<%= @store.id %>/books/<%= book.id %>/edit"><button type="submit" class="btn btn-secondary">EDIT</button></a><br><br>
-<% end %>
-<% end %><br>
 
 <%= link_to "Go Back Home", "/" %>
 

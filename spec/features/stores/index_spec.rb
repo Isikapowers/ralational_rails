@@ -65,6 +65,14 @@ RSpec.describe "Stores Index Page" do
       expect(current_path).to eq("/stores/#{@store1.id}/edit")
     end
 
+    it "can take user to edit page with form" do
+      visit "/stores/#{@store1.id}/edit"
+
+      expect(page).to have_field("name")
+      expect(page).to have_field("inventory")
+      # expect(page).to have_check("kids friendly")
+    end
+
     it "can take user to stores page from every page" do
       visit "/stores/#{@store1.id}/books"
 
@@ -112,10 +120,10 @@ RSpec.describe "Stores Index Page" do
   end
 
   describe "Iteration 3" do
-    it "can allow user to delete store" do
+    xit "can allow user to delete store" do
       visit "/stores/#{@store1.id}"
 
-      click_on "DELETE"
+      click_button "DELETE"
 
       expect(current_path).to eq("/stores")
       expect(page).to have_no_content(@store1.name)

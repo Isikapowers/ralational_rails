@@ -74,9 +74,36 @@ RSpec.describe "Store Book Index Page" do
       # check("Kids friendly", with: true)
 
       click_on "SUBMIT"
-      book_id = Book.last
+      book_id = Book.last.id
 
       expect(current_path).to eq("/stores/#{@store1.id}/books")
+      expect(page).to have_content("Hello Kitty")
+      # expect(page).to have_content("8888")
+      # expect(page).to have_content("Open_on_weekends: true")
+    end
+
+    xit "can take user to edit existing book with form" do
+      visit "/stores/#{@store1.id}/books"
+
+      click_link "EDIT"
+
+      expect(current_path).to eq("/stores/#{@store1.id}/books/#{@dino.id}/edit")
+
+      expect(page).to have_field(:title)
+      expect(page).to have_field(:price)
+      expect(page).to have_field(:kids_friendly)
+    end
+
+    it "can let user fill out the form and submit" do
+      visit "/stores/#{@store1.id}/books/#{@dino.id}/edit"
+
+      fill_in("Title", with: "Hello Kitty")
+      fill_in("Price", with: 12.99)
+      # check("Kids friendly", with: true)
+
+      click_on "SUBMIT"
+
+      expect(current_path).to eq("/stores/#{@store1.id}/books/#{@dino.id}")
       expect(page).to have_content("Hello Kitty")
       # expect(page).to have_content("8888")
       # expect(page).to have_content("Open_on_weekends: true")
@@ -88,6 +115,25 @@ RSpec.describe "Store Book Index Page" do
       click_link("Go Back Home")
 
       expect(current_path).to eq("/")
+    end
+
+    xit "can disply books in alphabetical order" do
+      visit "/stores/#{@store1.id}/books"
+
+      click_on "View Alphabetical Order"
+
+      expect(page).to have_content([@dino, @moon])
+    end
+  end
+
+  describe "Iteration 3" do
+    xit "allows user to delete book" do
+      visit "/stores/#{@store1.id}/books"
+
+      click_on "DELETE"
+
+      expect(current_path).to eq("/stores/#{@store1.id}/books")
+      # expect(page).to have_no_content()
     end
   end
 

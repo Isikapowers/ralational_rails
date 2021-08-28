@@ -3,7 +3,11 @@ class StoreBooksController < ApplicationController
   def index
     @store = Store.find(params[:store_id])
     @books = @store.books
-    @books_ordered = @books.alphabetical_order
+    if params[:order] == "title"
+      @books = @books.alphabetical_order
+    elsif params[:price] == "Search"
+      @books = @books.search_by_price(params[:search_by_price])
+    end
   end
 
   def new
@@ -47,7 +51,7 @@ class StoreBooksController < ApplicationController
 
   def destroy
     store = Store.find(params[:store_id])
-    Book.destroy(params[:book_id])
+    store.books.destroy(params[:book_id])
 
     redirect_to "/stores/#{store.id}/books"
   end

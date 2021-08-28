@@ -8,11 +8,7 @@ class StoresController < ApplicationController
   end
 
   def create
-    store = Store.create({
-      name: params[:name],
-      inventory: params[:inventory],
-      open_on_weekends: params[:open_on_weekends]
-      })
+    store = Store.create(store_params)
 
     redirect_to "/stores"
   end
@@ -27,11 +23,7 @@ class StoresController < ApplicationController
 
   def update
     store = Store.find(params[:id])
-    store.update({
-      name: params[:name],
-      inventory: params[:inventory],
-      open_on_weekends: params[:open_on_weekends]
-      })
+    store.update(store_params)
 
     store.save
 
@@ -44,10 +36,11 @@ class StoresController < ApplicationController
     redirect_to "/stores"
   end
 
-  # private
-  #
-  # def store_params
-  #   params.require(:store).permit(:name, :inventory, :open_on_weekends)
-  # end
+
+  private
+
+  def store_params
+    params.require[:store].permit(:name, :inventory, :open_on_weekends, :search_by_price)
+  end
 
 end
