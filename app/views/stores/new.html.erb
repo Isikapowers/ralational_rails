@@ -15,6 +15,8 @@
 
 <nav class="container">
 
+<h2>Add New Store</h2><br>
+
 <%= form_with url: "/stores", method: :post, local: true do |form| %>
   <%= form.label :name %>
   <%= form.text_field :name %><br>
@@ -23,8 +25,8 @@
   <%= form.label :open_on_weekends, 'Open on weekends:' %>
   <%= form.check_box :open_on_weekends, {}, true, false %><br><br>
   <button type="submit" class="btn btn-primary">SUBMIT</button>
-<% end %>
+<% end %><br>
+
+<%= link_to "Go Back Home", "/" %>
 
 </nav><br>
-
-<p><a href="/"</a>Go Back Home</p>
