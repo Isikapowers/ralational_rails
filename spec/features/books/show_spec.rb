@@ -48,6 +48,54 @@ RSpec.describe "Book Show Page" do
 
       expect(current_path).to eq("/stores")
     end
+
+    it "can take user back to all books page" do
+      visit "/books/#{@book1.id}"
+
+      click_on "All Books"
+
+      expect(current_path).to eq("/books")
+    end
+  end
+
+  describe "Iteration 2" do
+    it "allows user to edit" do
+      visit "/books/#{@book1.id}"
+
+      click_on "EDIT", match: :first
+
+      expect(current_path).to eq("/books/#{@book1.id}/edit")
+
+      expect(page).to have_field(:title)
+      expect(page).to have_field(:price)
+      expect(page).to have_field(:kids_friendly)
+    end
+
+    it "allows user to fill in info and submit" do
+      visit "/books/#{@book1.id}/edit"
+
+      fill_in(:title, with: "Dinosaurs and Friends")
+      fill_in(:price, with: 14.99)
+
+      click_on "SUBMIT"
+      book_id = Book.last.id - 1
+
+      expect(current_path).to eq("/books/#{book_id}")
+    end
+
+    it "can order books in alphabetical order" do
+      expect(@store1.books.alphabetical_order).to eq([@book1, @book2])
+    end
+  end
+
+  describe "Iteration 3" do
+    it "allows user to delete book and redirect back to book page" do
+      visit "/books"
+
+      click_on "DELETE", match: :first
+
+      expect(current_path).to eq("/books")
+    end
   end
 
 end

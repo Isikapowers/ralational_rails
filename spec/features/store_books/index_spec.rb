@@ -82,10 +82,10 @@ RSpec.describe "Store Book Index Page" do
       # expect(page).to have_content("Open_on_weekends: true")
     end
 
-    xit "can take user to edit existing book with form" do
+    it "can take user to edit existing book with form" do
       visit "/stores/#{@store1.id}/books"
 
-      click_link "EDIT"
+      click_link "EDIT", match: :first
 
       expect(current_path).to eq("/stores/#{@store1.id}/books/#{@dino.id}/edit")
 
@@ -122,18 +122,19 @@ RSpec.describe "Store Book Index Page" do
 
       click_on "View Alphabetical Order"
 
-      expect(page).to have_content([@dino, @moon])
+      expect(page).to match([@dino, @moon])
     end
   end
 
   describe "Iteration 3" do
-    xit "allows user to delete book" do
+    it "allows user to delete book" do
       visit "/stores/#{@store1.id}/books"
 
-      click_on "DELETE"
+      click_on "DELETE", match: :first
 
       expect(current_path).to eq("/stores/#{@store1.id}/books")
-      # expect(page).to have_no_content()
+      expect(page).to have_no_content(@dino)
+      expect(page).to have_text(@moon.title)
     end
   end
 

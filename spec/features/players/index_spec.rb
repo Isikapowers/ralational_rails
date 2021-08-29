@@ -43,7 +43,7 @@ RSpec.describe 'the players index page' do
   it 'links you to team index' do
     visit '/players'
 
-    click_on "Teams"
+    click_on "Basketball Teams"
 
     expect(current_path).to eq("/teams")
   end
@@ -56,10 +56,10 @@ RSpec.describe 'the players index page' do
     expect(current_path).to eq("/players")
   end
 
-  xit 'links you to edit players ' do
+  it 'links you to edit players ' do
     visit '/players'
 
-    click_on "Edit"
+    click_on "EDIT"
 
     expect(current_path).to eq("/players/#{kevin.id}/edit")
   end

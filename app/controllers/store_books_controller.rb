@@ -5,8 +5,8 @@ class StoreBooksController < ApplicationController
     @books = @store.books
     if params[:order] == "title"
       @books = @books.alphabetical_order
-    elsif params[:price] == "Search"
-      @books = @books.search_by_price(params[:search_by_price])
+    elsif params[:search]
+      @books = @books.search(params[:search])
     end
   end
 
@@ -16,11 +16,7 @@ class StoreBooksController < ApplicationController
 
   def create
     store = Store.find(params[:store_id])
-    book = store.books.create({
-      title: params[:title],
-      price: params[:price],
-      kids_friendly: params[:kids_friendly]
-    })
+    book = store.books.create(book_params)
 
     redirect_to "/stores/#{store.id}/books"
   end
@@ -38,11 +34,7 @@ class StoreBooksController < ApplicationController
   def update
     store = Store.find(params[:store_id])
     book = store.books.find(params[:book_id])
-    book.update({
-      title: params[:title],
-      price: params[:price],
-      kids_friendly: params[:kids_friendly]
-      })
+    book.update(book_params)
 
     book.save
 
@@ -54,6 +46,13 @@ class StoreBooksController < ApplicationController
     store.books.destroy(params[:book_id])
 
     redirect_to "/stores/#{store.id}/books"
+  end
+
+
+  private
+
+  def book_params
+    params.permit(:title, :price, :kids_friendly, :search)
   end
 
 end

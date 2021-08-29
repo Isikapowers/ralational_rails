@@ -6,36 +6,43 @@ RSpec.describe "Book Index Page" do
 
     @book1 = @store1.books.create!(title: "Dino Potty Book", price: 13.99, kids_friendly: true)
     @book2 = @store1.books.create!(title: "I Love You to The Moon and Back", price: 29.89, kids_friendly: true)
+    @book3 = @store1.books.create!(title: "Rubyist", price: 18.98, kids_friendly: false)
   end
 
-  it "shows all of the title of the stores" do
-    visit "/books"
+  describe "Iteration 1" do
 
-    expect(page).to have_content(@book1.title)
-    expect(page).to have_content(@book2.title)
-  end
+    it "can create book" do
+      expect(@book1).to be_valid
+    end
 
-  it "shows each book's attributes" do
-    visit "/books/#{@book1.id}"
+    it "shows all of the books that have true value on kids friendly" do
+      visit "/books"
 
-    expect(page).to have_content(@book1.title)
-    expect(page).to have_content(@book1.price)
-    expect(page).to have_content(@book1.kids_friendly)
-  end
+      expect(page).to have_content(@book1.title)
+      expect(page).to have_content(@book2.title)
+      expect(page).to have_no_content(@book3.title)
+    end
 
-  it "shows each book's attributes" do
-    visit "/books/#{@book2.id}"
+    it "shows each book's attributes" do
+       visit "/books/#{@book1.id}"
 
-    expect(page).to have_content(@book2.title)
-    expect(page).to have_content(@book2.price)
-    expect(page).to have_content(@book2.kids_friendly)
-  end
+       expect(page).to have_content(@book1.title)
+       expect(page).to have_content(@book1.price)
+       expect(page).to have_content(@book1.kids_friendly)
+    end
 
-  describe "Links/Buttons in Iteration 1" do
+    it "shows each book's attributes" do
+      visit "/books/#{@book2.id}"
+
+      expect(page).to have_content(@book2.title)
+      expect(page).to have_content(@book2.price)
+      expect(page).to have_content(@book2.kids_friendly)
+    end
+
     it "can go back home" do
       visit "/books/"
 
-      click_link("Go Back Home")
+      click_link "Go Back Home"
 
       expect(current_path).to eq("/")
     end
@@ -48,7 +55,7 @@ RSpec.describe "Book Index Page" do
       expect(current_path).to eq("/stores")
     end
 
-    it "can take user to child index page from every page" do
+    it "can take user to book index page from every page" do
       visit "/stores/#{@store1.id}/books"
 
       click_link "Books"
@@ -57,11 +64,11 @@ RSpec.describe "Book Index Page" do
     end
   end
 
-  describe "Links/Buttons in Iteration 2" do
-    xit "can take user to edit book page with form" do
+  describe "Iteration 2" do
+    it "can take user to edit book page with form" do
       visit "/books"
 
-      click_link "EDIT"
+      click_link "EDIT", match: :first
 
       expect(current_path).to eq("/books/#{@book1.id}/edit")
 
@@ -81,8 +88,8 @@ RSpec.describe "Book Index Page" do
 
       expect(current_path).to eq("/books/#{@book1.id}")
       expect(page).to have_content("Hello Kitty")
-      # expect(page).to have_content("8888")
-      # expect(page).to have_content("Open_on_weekends: true")
+      expect(page).to have_content(12.99)
+      # expect(page).to have_content("true")
     end
 
     it "can go back home from any page" do
@@ -91,6 +98,8 @@ RSpec.describe "Book Index Page" do
       click_link("Go Back Home")
 
       expect(current_path).to eq("/")
+      expect(page).to have_content("Book Stores")
+      expect(page).to have_content("Basketball Teams")
     end
   end
 
@@ -101,7 +110,8 @@ RSpec.describe "Book Index Page" do
       click_on "DELETE"
 
       expect(current_path).to eq("/books")
-      expect(page).to have_no_content(@book1.title)
+      expect(page).to have_no_content(@book1)
+      expect(page).to have_content(@book2.title)
     end
   end
 
