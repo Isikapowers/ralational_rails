@@ -11,7 +11,11 @@
       <a class="nav-link active" href="/players">Players</a>
     </div>
   </div>
-</nav>
+</nav><br>
+
+<nav class="container">
+
+<%= link_to "All Players", "/players" %>
 
 <h1><%= @player.name %></h1>
 
@@ -19,3 +23,13 @@
 <p>Are they injured?: <%= @player.injured %></p>
 
 <a href="/players/<%= @player.id %>/edit"><button type="submit" class="btn btn-secondary">EDIT</button></a>
+
+<form action="/players/<%= @player.id %>" method="POST">
+  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+  <input type="hidden" name="_method" value="DELETE">
+  <button type="submit" class="btn btn-danger">DELETE</button>
+</form><br>
+
+<%= link_to "Go Back Home", "/" %>
+
+</nav>

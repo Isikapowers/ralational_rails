@@ -11,9 +11,23 @@
       <a class="nav-link" href="/players">Players</a>
     </div>
   </div>
+</nav>
+
+<nav class="navbar navbar-expand-lg navbar-light bg-secondary">
+  <a class="navbar-brand" href="/stores">List of Stores</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+    <div class="navbar-nav">
+      <a class="nav-link" href="/stores/<%= @store.id %>/books">List of Books<span class="sr-only">(current)</span></a>
+      <a class="nav-link" href="/stores/<%= @store.id %>/books/new">Add New Book</a>
+    </div>
+  </div>
 </nav><br>
 
 <nav class="container">
+
 <%= form_with url: "/stores/#{@store.id}", method: :patch, local: true do |form| %>
   <%= form.label :name %>
   <%= form.text_field :name %><br>
@@ -22,7 +36,8 @@
   <%= form.label :open_on_weekends, "Open on weekends:" %>
   <%= form.check_box :open_on_weekends, {}, true, false %><br><br>
   <button type="submit" class="btn btn-primary">SUBMIT</button>
-<% end %>
-</nav><br>
+<% end %><br>
 
-<p><a href="/"</a>Go Back Home</p>
+<%= link_to "Go Back Home", "/" %>
+
+</nav><br>

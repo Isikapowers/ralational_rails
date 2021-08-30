@@ -1,4 +1,5 @@
 class TeamsController < ApplicationController
+
   def index
     @teams = Team.all
   end
@@ -33,12 +34,16 @@ class TeamsController < ApplicationController
       wins: params[:team][:wins],
       make_playoffs: params[:team][:make_playoffs]
       })
+
     team.save
+
     redirect_to "/teams/#{team.id}"
   end
 
   def destroy
     Team.destroy(params[:id])
+    
     redirect_to '/teams'
   end
+
 end

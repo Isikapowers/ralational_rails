@@ -1,6 +1,7 @@
 class PlayersController < ApplicationController
+
   def index
-    @players = Player.all
+    @players = Player.show_only_true
   end
 
   def new
@@ -33,12 +34,16 @@ class PlayersController < ApplicationController
       number: params[:player][:number],
       injured: params[:player][:injured]
       })
+
     player.save
+
     redirect_to "/players/#{player.id}"
   end
 
   def destroy
     Player.destroy(params[:id])
+
     redirect_to '/players'
   end
+
 end

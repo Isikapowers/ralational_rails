@@ -16,7 +16,7 @@ RSpec.describe 'the players index page' do
     expect(page).to have_content("Is player injured?")
   end
 
-  xit 'allows you to click on submit player' do
+  it 'allows you to click on submit player' do
     visit "/players/#{@kevin.id}/edit"
 
     click_on "Submit"

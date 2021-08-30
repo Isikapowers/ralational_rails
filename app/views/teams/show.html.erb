@@ -11,16 +11,18 @@
       <a class="nav-link" href="/players">Players</a>
     </div>
   </div>
-</nav>
+</nav><br>
+
+<nav class="container">
 
 <h1><%= @team.name %></h1>
 
 <p>Total Wins: <%= @team.wins %></p>
-
 <p>Make Playoffs? <%= @team.make_playoffs %></p>
-
 <p>There are <%= @team.players.size %> players on the team!</p>
-
 <a href="/teams/<%= @team.id %>/players">List of Players</a><br>
+<a href="/teams/<%= @team.id %>/edit">Update Team</a><br>
 
-<a href="/teams/<%= @team.id %>/edit">Update Team</a>
+<%= link_to "Go Back Home", "/" %>
+
+</nav>

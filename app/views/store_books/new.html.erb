@@ -11,20 +11,22 @@
       <a class="nav-link" href="/players">Players</a>
     </div>
   </div>
-</nav>
+</nav><br>
 
 <nav class="container">
+
+<h1><%= @store.name %></h1><br>
 
 <%= form_with url: "/stores/#{@store.id}/books", method: :post, local: true do |form| %>
   <%= form.label :title %>
   <%= form.text_field :title %><br>
   <%= form.label :price %>
-  <%= form.number_field :price %><br>
+  <%= form.number_field :price, step: 0.01 %><br>
   <%= form.label :kids_friendly, 'Kids Friendly:' %>
   <%= form.check_box :kids_friendly, {}, true, false %><br><br>
   <button type="submit" class="btn btn-primary">SUBMIT</button>
-<% end %>
+<% end %><br>
+
+<%= link_to "Go Back Home", "/" %>
 
 </nav><br>
-
-<p><a href="/"</a>Go Back Home</p>

@@ -11,22 +11,20 @@
       <a class="nav-link" href="/players">Players</a>
     </div>
   </div>
-</nav>
+</nav><br>
 
+<nav class="container">
 
 <h1>All Players on Team</h1>
 
 <h2><a href="/teams/<%= @team.id %>/players/new">Add New Player</a></h2>
 
 <% @players.each do |player| %>
-
 <h1><%= player.name %></h1>
-
 <p>Number: <%= player.number %></p>
-
 <p>Injured: <%= player.injured %></p>
+<% end %><br>
 
-<% end %>
+<%= link_to "Go Back Home", "/" %>
 
-
-<p><a href="/">Go Back Home</a></p>
+</nav>
