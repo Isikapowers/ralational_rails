@@ -1,8 +1,8 @@
 class Book < ApplicationRecord
+
   belongs_to :store
   validates :title, presence: true
   validates :price, presence: true
-  # validates :kids_friendly
 
   def self.alphabetical_order
     order(:title)
@@ -12,9 +12,9 @@ class Book < ApplicationRecord
     where(kids_friendly: true)
   end
 
-  def self.search_by_price(search)
+  def self.search(search)
     if search
-      self.where("price >= search.to_i")
+      where(["price >= ?", "#{search}"])
     end
   end
 

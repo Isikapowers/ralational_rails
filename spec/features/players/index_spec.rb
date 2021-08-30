@@ -10,8 +10,8 @@ RSpec.describe 'the players index page' do
   it 'can see all players names' do
     visit '/players'
 
-    expect(page).to have_content(@kevin.name)
-    expect(page).to have_content(@lebron.name)
+    expect(page).to have_content(@kevin)
+    expect(page).to have_content(@lebron)
     expect(page).to have_content("Number: #{@kevin.number}")
     expect(page).to have_content("Number: #{@lebron.number}")
   end
@@ -25,10 +25,10 @@ RSpec.describe 'the players index page' do
   end
 
 
-  xit 'links you to edit players ' do
+  it 'links you to edit players ' do
     visit '/players'
 
-    click_on "Edit"
+    click_on "EDIT"
 
     expect(current_path).to eq("/players/#{kevin.id}/edit")
   end

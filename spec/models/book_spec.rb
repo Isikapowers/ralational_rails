@@ -15,10 +15,6 @@ RSpec.describe Book, type: :model do
 
   it {should belong_to :store}
 
-  it "can crate a book" do
-    expect(@store1.books.new).to be_valid
-  end
-
   it "can count books in the store" do
     expect(@store1.books.count).to eq(2)
   end
@@ -31,6 +27,10 @@ RSpec.describe Book, type: :model do
   it "can order books in alphabetical order" do
     expect(@store1.books.alphabetical_order).to eq([@dino, @moon])
     expect(@store2.books.alphabetical_order).to eq([@harry, @rr])
+  end
+
+  xit "can search books by price" do
+    expect(@store1.search(15)).to eq(@moon)
   end
 
 end
