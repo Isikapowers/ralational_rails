@@ -1,9 +1,8 @@
 require 'rails_helper'
 
-RSpec.describe 'the teams show page' do
+RSpec.describe 'the teams players index page' do
   before :each do
     @team = Team.create!(name: "New York Knicks", make_playoffs: true, wins: 50)
-    @team_2 = Team.create!(name: "Nets", make_playoffs: true, wins: 25)
     @kevin = @team.players.create!(name: "Kevin Durant", number: 25, injured: false)
     @lebron = @team.players.create!(name: "Lebron James", number: 11, injured: false)
   end
@@ -19,7 +18,7 @@ RSpec.describe 'the teams show page' do
   it 'links you to store index' do
     visit '/players'
 
-    click_on "Stores"
+    click_on "Book Stores"
 
     expect(current_path).to eq("/stores")
   end
@@ -40,31 +39,21 @@ RSpec.describe 'the teams show page' do
     expect(current_path).to eq("/players")
   end
 
-  describe "iteration 1" do
-    it 'shows the count of players for the team' do
-      visit "/teams/#{@team.id}"
+  describe "iteration 2" do
+    it "creates a new player" do
+      visit "/teams/#{@team.id}/players/new"
 
-      expect(page).to have_content("There are 2 players on the team")
+      expect(page).to have_field("Name")
+      expect(page).to have_field("Number")
+      expect(page).to have_field("injured")
     end
 
-    it "takes me to the players of team page" do
-      visit "/teams/#{@team.id}"
+    it "redirects you back to all players per team after you submit" do
+      visit "/teams/#{@team.id}/players/new"
 
-      expect(page).to have_content("List of Players")
-
-      click_on "List of Players"
+      click_on "SUBMIT"
 
       expect(current_path).to eq("/teams/#{@team.id}/players")
-    end
-  end
-
-  describe "iteration 2" do
-    it "allows me to update a team" do
-      visit "/teams"
-
-      click_on "EDIT", match: :first
-
-      expect(current_path).to eq("/teams/#{@team_2.id}/edit")
     end
   end
 end

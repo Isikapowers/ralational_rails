@@ -3,48 +3,17 @@ require 'rails_helper'
 RSpec.describe 'the players index page' do
   before :each do
     @team = Team.create!(name: "New York Knicks", make_playoffs: true, wins: 50)
-    @kevin = @team.players.create!(name: "Kevin Durant", number: 25, injured: false)
-    @lebron = @team.players.create!(name: "Lebron James", number: 11, injured: false)
+    @kevin = @team.players.create!(name: "Kevin Durant", number: 25, injured: true)
+    @lebron = @team.players.create!(name: "Lebron James", number: 11, injured: true)
   end
 
-  it 'links you to book index' do
-    visit '/players'
-
-    click_on "Books"
-
-    expect(current_path).to eq("/books")
-  end
-
-  it 'links you to store index' do
-    visit '/players'
-
-    click_on "Book Stores"
-
-    expect(current_path).to eq("/stores")
-  end
-
-  it 'links you to team index' do
-    visit '/players'
-
-    click_on "Teams"
-
-    expect(current_path).to eq("/teams")
-  end
-
-  it 'links you to book index' do
-    visit '/players'
-
-    click_on "Players"
-
-    expect(current_path).to eq("/players")
-  end
 
   it 'allows you to edit player' do
     visit "/players/#{@kevin.id}/edit"
 
-    expect(page).to have_content("Update player name:")
-    expect(page).to have_content("Enter player number:")
-    expect(page).to have_content("Is the player injured?")
+    expect(page).to have_field("Name")
+    expect(page).to have_field("Number")
+    expect(page).to have_field("Injured")
   end
 
   it 'allows you to click on submit player' do

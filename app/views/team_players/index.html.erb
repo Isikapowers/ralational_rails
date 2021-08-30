@@ -17,6 +17,14 @@
 
 <h1>All Players on Team</h1>
 
+<%= link_to "View Alphabetical Order", "/teams/#{@team.id}/players?order=name" %><br><br>
+
+<h3>Search by Number:</h3>
+  <%= form_with url: "/teams/#{@team.id}/players?search=price", method: :get, local: true do %>
+  <%= text_field_tag(:search, params[:search]) %>
+  <%= submit_tag ("Search") %><br><br>
+  <% end %>
+
 <h2><a href="/teams/<%= @team.id %>/players/new">Add New Player</a></h2>
 
 <% @players.each do |player| %>
