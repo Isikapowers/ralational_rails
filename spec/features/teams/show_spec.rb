@@ -40,9 +40,31 @@ RSpec.describe 'the teams show page' do
     expect(current_path).to eq("/players")
   end
 
-  it 'shows the count of players for the team' do
-    visit "/teams/#{@team.id}"
+  describe "iteration 1" do
+    it 'shows the count of players for the team' do
+      visit "/teams/#{@team.id}"
 
-    expect(page).to have_content("There are 2 players on the team")
+      expect(page).to have_content("There are 2 players on the team")
+    end
+
+    it "takes me to the players of team page" do
+      visit "/teams/#{@team.id}"
+
+      expect(page).to have_content("List of Players")
+
+      click_on "List of Players"
+
+      expect(current_path).to eq("/teams/#{@team.id}/players")
+    end
+  end
+
+  describe "iteration 2" do
+    it "allows me to update a team" do
+      visit "/teams"
+
+      click_on "EDIT", match: :first
+
+      expect(current_path).to eq("/teams/#{@team_2.id}/edit")
+    end
   end
 end

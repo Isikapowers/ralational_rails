@@ -7,22 +7,31 @@ RSpec.describe 'the players index page' do
     @lebron = @team.players.create!(name: "Lebron James", number: 11, injured: true)
   end
 
-  it 'can see all players names' do
-    visit '/players'
+  describe "Iteration 1" do
+    it 'can see all players names' do
+      visit '/players'
 
-    expect(page).to have_content(@kevin.name)
-    expect(page).to have_content(@lebron.name)
-    expect(page).to have_content("Number: #{@kevin.number}")
-    expect(page).to have_content("Number: #{@lebron.number}")
-  end
+      expect(page).to have_content(@kevin.name)
+      expect(page).to have_content(@lebron.name)
+      expect(page).to have_content("Number: #{@kevin.number}")
+      expect(page).to have_content("Number: #{@lebron.number}")
+    end
 
-  it 'links you to a player page' do
-    visit '/players'
+    it 'links you to a player page' do
+      visit '/players'
 
-    click_on "#{@kevin.name}"
+      click_on "#{@kevin.name}"
 
-    expect(current_path).to eq("/players/#{@kevin.id}")
-  end
+      expect(current_path).to eq("/players/#{@kevin.id}")
+    end
+
+    it "shows all a players attributes" do
+      visit "/players/#{@kevin.id}"
+
+      expect(page).to have_content(@kevin.name)
+      expect(page).to have_content(@kevin.number)
+    end
+  end 
 
 
   it 'links you to edit players ' do

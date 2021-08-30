@@ -15,16 +15,20 @@
 
 <nav class="containers">
 
-<form action="/teams" method="post">
-  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
-  <p>Enter a new team:</p>
-  <input type='text' name='team[name]'/><br/>
-  <p>Enter total wins:</p>
-  <input type='integer' name='team[wins]'/><br/>
-  <p>Did the team make the playoffs?</p>
-  <input type='checkbox' name='team[make_playoffs]'/><br/>
-  <input type='submit'/>
-</form><br>
+
+  <%= form_with url: "/teams", method: :post, local: true do |f| %>
+    <%= f.label :name %>
+    <%= f.text_field :name %><br>
+
+    <%= f.label :wins %>
+    <%= f.number_field :wins %><br>
+
+    <%= f.label :make_playoffs %>
+    <%= f.check_box :make_playoffs %><br>
+
+    <%= f.submit "Submit" %>
+  <% end %>
+
 
 <%= link_to "Go Back Home", "/" %>
 

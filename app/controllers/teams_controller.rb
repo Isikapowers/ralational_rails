@@ -9,9 +9,9 @@ class TeamsController < ApplicationController
 
   def create
     team = Team.new({
-      name: params[:team][:name],
-      wins: params[:team][:wins],
-      make_playoffs: params[:team][:make_playoffs]
+      name: params[:name],
+      wins: params[:wins],
+      make_playoffs: params[:make_playoffs]
       })
 
     team.save
@@ -30,9 +30,9 @@ class TeamsController < ApplicationController
   def update
     team = Team.find(params[:id])
     team.update({
-      name: params[:team][:name],
-      wins: params[:team][:wins],
-      make_playoffs: params[:team][:make_playoffs]
+      name: params[:name],
+      wins: params[:wins],
+      make_playoffs: params[:make_playoffs]
       })
 
     team.save
@@ -42,7 +42,7 @@ class TeamsController < ApplicationController
 
   def destroy
     Team.destroy(params[:id])
-    
+
     redirect_to '/teams'
   end
 

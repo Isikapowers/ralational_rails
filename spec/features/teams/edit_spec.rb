@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe 'the teams players index page' do
+RSpec.describe 'the teams new page' do
   before :each do
     @team = Team.create!(name: "New York Knicks", make_playoffs: true, wins: 50)
     @kevin = @team.players.create!(name: "Kevin Durant", number: 25, injured: false)
@@ -39,25 +39,21 @@ RSpec.describe 'the teams players index page' do
     expect(current_path).to eq("/players")
   end
 
-  describe "iteration 1" do
-    it 'shows you all the players for a specific team' do
-      visit "/teams/#{@team.id}/players"
+  describe "iteration 2" do
+    it 'has a form to update team record' do
+      visit "/teams/#{@team.id}/edit"
 
-      expect(page).to have_content("All Players on Team")
-      expect(page).to have_content("#{@kevin.name}")
-      expect(page).to have_content("#{@kevin.number}")
-      expect(page).to have_content("#{@kevin.injured}")
-      expect(page).to have_content("#{@lebron.name}")
-      expect(page).to have_content("#{@lebron.number}")
-      expect(page).to have_content("#{@lebron.injured}")
+      expect(page).to have_field("Name")
+      expect(page).to have_field("Wins")
+      expect(page).to have_field("Make playoffs")
+    end
+
+    it 'has a form for a new team record' do
+      visit "/teams/#{@team.id}/edit"
+
+      click_on "Submit"
+
+      expect(current_path).to eq("/teams/#{@team.id}")
     end
   end
-
-    describe "iteration 2" do
-      it "allows us to create a player from a teams players page" do
-        visit "/teams/#{@team.id}/players"
-
-        expect(page).to have_content("Add New Player")
-      end
-    end
 end

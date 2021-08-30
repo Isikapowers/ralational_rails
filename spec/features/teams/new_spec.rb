@@ -39,19 +39,21 @@ RSpec.describe 'the teams new page' do
     expect(current_path).to eq("/players")
   end
 
-  it 'has a form for a new team record' do
-    visit "/teams/new"
+  describe "iteration 2" do
+    it 'has a form for a new team record' do
+      visit "/teams/new"
 
-    expect(page).to have_content("Enter a new team:")
-    expect(page).to have_content("Enter total wins:")
-    expect(page).to have_content("Did the team make the playoffs?")
-  end
+      expect(page).to have_field("Name")
+      expect(page).to have_field("Wins")
+      expect(page).to have_field("Make playoffs")
+    end
 
-  xit 'has a form for a new team record' do
-    visit "/teams/new"
+    it 'has a form for a new team record' do
+      visit "/teams/new"
 
-    click_on "SUBMIT"
+      click_on "Submit"
 
-    expect(current_path).to be("/teams")
+      expect(current_path).to eq("/teams")
+    end
   end
 end
