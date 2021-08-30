@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe 'the teams new page' do
+RSpec.describe 'the teams players index page' do
   before :each do
     @team = Team.create!(name: "New York Knicks", make_playoffs: true, wins: 50)
     @kevin = @team.players.create!(name: "Kevin Durant", number: 25, injured: false)
@@ -40,32 +40,20 @@ RSpec.describe 'the teams new page' do
   end
 
   describe "iteration 2" do
-    it 'has a form to update team record' do
-      visit "/teams/#{@team.id}/edit"
+    it "creates a new player" do
+      visit "/teams/#{@team.id}/players/new"
 
       expect(page).to have_field("Name")
-      expect(page).to have_field("Wins")
-      expect(page).to have_field("Make playoffs")
+      expect(page).to have_field("Number")
+      expect(page).to have_field("injured")
     end
 
-    it 'has a form for a new team record' do
-      visit "/teams/#{@team.id}/edit"
+    it "redirects you back to all players per team after you submit" do
+      visit "/teams/#{@team.id}/players/new"
 
-      click_on "Submit"
+      click_on "SUBMIT"
 
-      expect(current_path).to eq("/teams/#{@team.id}")
-    end
-
-    it "edits a teams info" do
-      visit "/teams/#{@team.id}/edit"
-
-      fill_in('Name', with: 'NY Knicks')
-      fill_in('Wins', with: '123')
-      check('playoffs')
-
-      click_on "Submit"
-
-      expect(page).to have_content("NY Knicks")
+      expect(current_path).to eq("/teams/#{@team.id}/players")
     end
   end
 end

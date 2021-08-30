@@ -55,5 +55,19 @@ RSpec.describe 'the teams new page' do
 
       expect(current_path).to eq("/teams")
     end
+
+    it "creates a new team" do
+      visit "/teams/new"
+
+      fill_in('Name', with: 'Noobs')
+      fill_in('Wins', with: '11')
+      check('playoffs')
+
+      click_on "Submit"
+
+      visit "/teams"
+
+      expect(page).to have_content("Noobs")
+    end
   end
 end

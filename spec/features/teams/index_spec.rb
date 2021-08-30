@@ -79,11 +79,35 @@ RSpec.describe 'the teams index page' do
 
       expect(current_path).to eq("/teams/new")
     end
+
+    it "has an edit button for each team" do
+      visit "/teams"
+
+      expect(page).to have_content("EDIT")
+
+      click_on "EDIT", match: :first
+
+      expect(current_path).to eq("/teams/#{@team_2.id}/edit")
+    end
   end
 
-  it 'lets you click a link to create a new team and brings you to teams/new' do
-    visit "/teams"
+  describe "iteration 3" do
+    it "has a delete button" do
+      visit "/teams"
 
-    click_on "Add new team"
+      expect(page).to have_content("DELETE")
+    end
+
+    it "deletes a team when clicking delete" do
+      visit "/teams"
+
+      expect(page).to have_content("#{@team.name}")
+      expect(page).to have_content("#{@team_2.name}")
+
+      click_on "DELETE", match: :first
+
+      expect(page).to have_no_content("#{@team_2.name}")
+      expect(page).to have_content("#{@team.name}")
+    end
   end
 end
