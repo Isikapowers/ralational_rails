@@ -30,9 +30,9 @@ class PlayersController < ApplicationController
   def update
     player = Player.find(params[:id])
     player.update({
-      name: params[:player][:name],
-      number: params[:player][:number],
-      injured: params[:player][:injured]
+      name: params[:name],
+      number: params[:number],
+      injured: params[:injured]
       })
 
     player.save

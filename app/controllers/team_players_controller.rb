@@ -3,6 +3,11 @@ class TeamPlayersController < ApplicationController
   def index
     @team = Team.find(params[:team_id])
     @players = @team.players
+    if params[:order] == "name"
+      @players = @players.alphabetical_order
+    elsif params[:search]
+      @players = @players.search(params[:search])
+    end
   end
 
   def new

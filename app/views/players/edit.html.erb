@@ -15,18 +15,19 @@
 
 <nav class="container">
 
-<form action="/players/<%= @player.id %>" method="post">
-  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
-  <input type="hidden" name="_method" value="PATCH" />
-  <p>Edit</p>
-  <p>Update player name:</p>
-  <input type='text' name='player[name]' value="<%= @player.name %>"/><br/>
-  <p>Enter player number:</p>
-  <input type='text' name='player[number]' value="<%= @player.number%>"/><br/>
-  <p>Is the player injured?:</p>
-  <input type='checkbox' name='player[injured]' value="<%= @player.injured %>"/><br/>
-  <input type='submit'/>
-</form><br>
+<%= form_with url: "/players/#{@player.id}", method: :patch, local: true do |f| %>
+  <%= f.label :name %>
+  <%= f.text_field :name %><br>
+
+  <%= f.label :number %>
+  <%= f.number_field :number %><br>
+
+  <%= f.label :injured %>
+  <%= f.check_box :injured %><br>
+
+  <%= f.submit "Submit" %>
+<% end %>
+
 
 <%= link_to "Go Back Home", "/" %>
 
