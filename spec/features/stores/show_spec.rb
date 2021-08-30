@@ -10,47 +10,39 @@ RSpec.describe "Stores Show Page" do
     @store2 = Store.create!(name: "50/50 Book Store", open_on_weekends: false, inventory: 638)
   end
 
-  it "shows each store by id" do
-    visit "/stores/#{@store1.id}"
+  describe "Features in Iteration 1" do
+    it "shows the store with that id" do
+      visit "/stores/#{@store1.id}"
 
-    expect(page).to have_content(@store1.name)
-    expect(page).to_not have_content(@store2.name)
+      expect(page).to have_content(@store1.name)
+      expect(page).to_not have_content(@store2.name)
 
-    visit "/stores/#{@store2.id}"
+      visit "/stores/#{@store2.id}"
 
-    expect(page).to have_content(@store2.name)
-    expect(page).to_not have_content(@store1.name)
-  end
+      expect(page).to have_content(@store2.name)
+      expect(page).to_not have_content(@store1.name)
+    end
 
-  it "shows that store's attributes" do
-    visit "/stores/#{@store1.id}"
+    it "shows that store's attributes" do
+      visit "/stores/#{@store1.id}"
 
-    expect(page).to have_content(@store1.name)
-    expect(page).to have_content(@store1.open_on_weekends)
-    expect(page).to have_content(@store1.inventory)
+      expect(page).to have_content(@store1.name)
+      expect(page).to have_content(@store1.open_on_weekends)
+      expect(page).to have_content(@store1.inventory)
 
-    visit "/stores/#{@store2.id}"
+      visit "/stores/#{@store2.id}"
 
-    expect(page).to have_content(@store2.name)
-    expect(page).to have_content(@store2.open_on_weekends)
-    expect(page).to have_content(@store2.inventory)
-  end
+      expect(page).to have_content(@store2.name)
+      expect(page).to have_content(@store2.open_on_weekends)
+      expect(page).to have_content(@store2.inventory)
+    end
 
-  it "can disply a form for user to edit" do
-    visit "/stores/#{@store1.id}/edit"
+    it "can disply a form for user to edit" do
+      visit "/stores/#{@store1.id}/edit"
 
-    expect(page).to have_field("name")
-    expect(page).to have_field("inventory")
-    expect(page).to have_field("open_on_weekends")
-  end
-
-  describe "Links/Buttons" do
-    it "can go back home" do
-      visit "/stores/"
-
-      click_link("Go Back Home")
-
-      expect(current_path).to eq("/")
+      expect(page).to have_field("name")
+      expect(page).to have_field("inventory")
+      expect(page).to have_field("open_on_weekends")
     end
 
     it "can take user back to the book index page" do
@@ -60,7 +52,9 @@ RSpec.describe "Stores Show Page" do
 
       expect(current_path).to eq("/books")
     end
+  end
 
+  describe "Features in Iteration 2" do
     it "can take user to the books of that store page" do
       visit "/stores/#{@store1.id}"
 
@@ -77,12 +71,56 @@ RSpec.describe "Stores Show Page" do
       expect(current_path).to eq("/stores/#{@store2.id}/books")
     end
 
-    xit "can take user to update/edit store page" do
+    it "can take user to update/edit store's attributes" do
       visit "/stores/#{@store1.id}"
 
-      click_button "EDIT"
+      click_on "EDIT", match: :first
 
       expect(current_path).to eq("/stores/#{@store1.id}/edit")
+    end
+
+    it "displays a form" do
+      visit "/stores/#{@store1.id}/edit"
+
+      expect(page).to have_field(:name)
+      expect(page).to have_field(:inventory)
+      expect(page).to have_field(:open_on_weekends)
+    end
+
+    it "allows user to fill out a form and submit" do
+      visit "/stores/#{@store1.id}/edit"
+
+      fill_in(:name, with: "50/50 Book Store")
+      fill_in(:inventory, with: 72343)
+      # check_box(:open_on_weekends, with: true)
+
+      click_on "SUBMIT"
+
+      expect(current_path).to eq("/stores/#{@store1.id}")
+      expect(page).to have_content("50/50 Book Store")
+    end
+  end
+
+  describe "Features in Iteration 3" do
+    it "allows user to delete a store" do
+      visit "/stores"
+
+      click_on "DELETE", match: :first
+
+      expect(current_path).to eq("/stores")
+      expect(page).to have_no_content(@store1)
+      expect(page).to have_no_content(@book1)
+      expect(page).to have_no_content(@book2)
+    end
+  end
+
+  describe "Go Back Home" do
+    it "can go back home" do
+      visit "/stores/"
+
+      click_link("Go Back Home")
+
+      expect(current_path).to eq("/")
     end
   end
 

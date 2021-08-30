@@ -10,8 +10,8 @@ RSpec.describe 'the players index page' do
   it 'can see all players names' do
     visit '/players'
 
-    expect(page).to have_content(@kevin.name)
-    expect(page).to have_content(@lebron.name)
+    expect(page).to have_content(@kevin)
+    expect(page).to have_content(@lebron)
     expect(page).to have_content("Number: #{@kevin.number}")
     expect(page).to have_content("Number: #{@lebron.number}")
   end
