@@ -40,7 +40,7 @@ class StoresController < ApplicationController
   private
 
   def store_params
-    params.require[:store].permit(:name, :inventory, :open_on_weekends, :search_by_price)
+    params.permit(:name, :inventory, :open_on_weekends)
   end
 
 end

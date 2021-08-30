@@ -24,7 +24,7 @@
   <%= form.number_field :price, step: 0.01 %><br>
   <%= form.label :kids_friendly, 'Kids Friendly:' %>
   <%= form.check_box :kids_friendly, {}, true, false %><br><br>
-  <button type="submit" class="btn btn-primary">SUBMIT</button>
+  <%= form.submit "SUBMIT", class: "btn btn-primary" %>
 <% end %><br>
 
 <%= link_to "Go Back Home", "/" %>

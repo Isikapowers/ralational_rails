@@ -13,37 +13,39 @@ RSpec.describe "Store Book Index Page" do
     @rr= @store2.books.create!(title: "Ruby on Rails", price: 39.77, kids_friendly: false)
   end
 
-  it "shows all of the title of the stores" do
-    visit "/books"
+  describe "Features in Iteration 1" do
+    it "shows all of the title of the stores" do
+      visit "/stores/#{@store1.id}/books"
 
-    expect(page).to have_content(@dino.title)
-    expect(page).to have_content(@moon.title)
-  end
-
-  it "shows each book's attributes" do
-    visit "/stores/#{@store1.id}/books"
-
-    expect(page).to have_content(@dino.title)
-    expect(page).to have_content(@dino.price)
-    expect(page).to have_content(@dino.kids_friendly)
-
-    expect(page).to have_content(@moon.title)
-    expect(page).to have_content(@moon.price)
-    expect(page).to have_content(@moon.kids_friendly)
-
-    expect(page).to_not have_content(@harry.title)
-    expect(page).to_not have_content(@harry.price)
-  end
-
-  describe "Links/Buttons in Iteration 1" do
-    it "can go back home" do
-      visit "/books/"
-
-      click_link("Go Back Home")
-
-      expect(current_path).to eq("/")
+      expect(page).to have_content(@dino.title)
+      expect(page).to have_content(@moon.title)
     end
 
+    it "shows each book's attributes" do
+      visit "/stores/#{@store1.id}/books"
+
+      expect(page).to have_content(@dino.title)
+      expect(page).to have_content(@dino.price)
+      expect(page).to have_content(@dino.kids_friendly)
+
+      expect(page).to have_content(@moon.title)
+      expect(page).to have_content(@moon.price)
+      expect(page).to have_content(@moon.kids_friendly)
+
+      expect(page).to_not have_content(@harry.title)
+      expect(page).to_not have_content(@harry.price)
+    end
+
+    it "can take user to the store's books page" do
+      visit "/stores/#{@store1.id}"
+
+      click_on "List of Books"
+
+      expect(current_path).to eq("/stores/#{@store1.id}/books")
+    end
+  end
+
+  describe "Features in Iteration 2" do
     it "can take user to stores page from every page" do
       visit "/stores/#{@store1.id}/books"
 
@@ -51,10 +53,8 @@ RSpec.describe "Store Book Index Page" do
 
       expect(current_path).to eq("/stores")
     end
-  end
 
-  describe "Links/Buttons in Iteration 2" do
-    it "can take user to add new book to that store page with form" do
+    it "can take user to add new book to that store with form" do
       visit "/stores/#{@store1.id}"
 
       click_link "Add New Book"
@@ -66,7 +66,7 @@ RSpec.describe "Store Book Index Page" do
       expect(page).to have_field(:kids_friendly)
     end
 
-    it "can let user fill out the form and submit" do
+    it "allows user fill out the form and submit" do
       visit "/stores/#{@store1.id}/books/new"
 
       fill_in("Title", with: "Hello Kitty")
@@ -74,7 +74,6 @@ RSpec.describe "Store Book Index Page" do
       # check("Kids friendly", with: true)
 
       click_on "SUBMIT"
-      book_id = Book.last.id
 
       expect(current_path).to eq("/stores/#{@store1.id}/books")
       expect(page).to have_content("Hello Kitty")
@@ -82,10 +81,10 @@ RSpec.describe "Store Book Index Page" do
       # expect(page).to have_content("Open_on_weekends: true")
     end
 
-    xit "can take user to edit existing book with form" do
+    it "can take user to edit existing book with form" do
       visit "/stores/#{@store1.id}/books"
 
-      click_link "EDIT"
+      click_link "EDIT", match: :first
 
       expect(current_path).to eq("/stores/#{@store1.id}/books/#{@dino.id}/edit")
 
@@ -109,31 +108,45 @@ RSpec.describe "Store Book Index Page" do
       # expect(page).to have_content("Open_on_weekends: true")
     end
 
-    it "can go back home from any page" do
-      visit "/books/new"
-
-      click_link("Go Back Home")
-
-      expect(current_path).to eq("/")
-    end
-
     xit "can disply books in alphabetical order" do
       visit "/stores/#{@store1.id}/books"
 
       click_on "View Alphabetical Order"
 
-      expect(page).to have_content([@dino, @moon])
+      expect(current_path).to eq("/stores/#{@store1.id}/books")
+      expect(page).to eq([@dino, @moon])
     end
   end
 
-  describe "Iteration 3" do
-    xit "allows user to delete book" do
+  describe "Features in Iteration 3" do
+    it "allows user to delete book" do
       visit "/stores/#{@store1.id}/books"
 
-      click_on "DELETE"
+      click_on "DELETE", match: :first
 
       expect(current_path).to eq("/stores/#{@store1.id}/books")
-      # expect(page).to have_no_content()
+      expect(page).to have_no_content(@dino)
+      expect(page).to have_text(@moon.title)
+    end
+
+    it "can search books by price" do
+      visit "/stores/#{@store1.id}/books"
+
+      fill_in(:search, with: 29)
+      click_on "Search"
+
+      expect(current_path).to eq("/stores/#{@store1.id}/books")
+      expect(page).to have_content(@moon.title)
+    end
+  end
+
+  describe "Go Back Home" do
+    it "can go back home" do
+      visit "/books/"
+
+      click_link("Go Back Home")
+
+      expect(current_path).to eq("/")
     end
   end
 

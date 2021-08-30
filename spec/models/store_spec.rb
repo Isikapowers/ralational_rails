@@ -19,10 +19,6 @@ RSpec.describe Store, type: :model do
     expect(order("created_at DESC")).to eq([@store1, @store2])
   end
 
-  it "can crate a book" do
-    expect(@store1.books.new).to be_valid
-  end
-
   it "can count books in the store" do
     expect(@store1.books.count).to eq(2)
   end
