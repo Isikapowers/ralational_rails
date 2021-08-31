@@ -108,13 +108,13 @@ RSpec.describe "Store Book Index Page" do
       # expect(page).to have_content("Open_on_weekends: true")
     end
 
-    xit "can disply books in alphabetical order" do
+    it "can disply books in alphabetical order" do
       visit "/stores/#{@store1.id}/books"
 
       click_on "View Alphabetical Order"
 
       expect(current_path).to eq("/stores/#{@store1.id}/books")
-      expect(page).to eq([@dino, @moon])
+      expect(@dino.title).to appear_before(@moon.title)
     end
   end
 

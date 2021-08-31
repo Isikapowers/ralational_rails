@@ -138,12 +138,12 @@ RSpec.describe 'the teams players index page' do
       expect(page).to have_content("KEVIN")
     end
 
-    xit "shows players in alphabetical order when clicking link" do
+    it "shows players in alphabetical order when clicking link" do
       visit "/teams/#{@team.id}/players"
 
       click_on "View Alphabetical Order"
 
-      expect(page).to have_content("#{@kevin.name}")
+      expect(@kevin.name).to appear_before(@lebron.name)
     end
   end
 
@@ -154,11 +154,14 @@ RSpec.describe 'the teams players index page' do
       expect(page).to have_content("Search by Number")
     end
 
-    xit "returns all players over the searched number" do
-      visit "teams/#{@team.id}/players"
+    it "can search players by number" do
+      visit "/teams/#{@team.id}/players"
 
-      fill_in('Search', with: "20")
+      fill_in(:search, with: 20)
       click_on "Search"
+
+      expect(current_path).to eq("/teams/#{@team.id}/players")
+      expect(page).to have_content(@kevin.name)
     end
   end
 end
