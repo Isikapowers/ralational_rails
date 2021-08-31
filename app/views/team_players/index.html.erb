@@ -31,6 +31,7 @@
 <h1><%= player.name %></h1>
 <p>Number: <%= player.number %></p>
 <p>Injured: <%= player.injured %></p>
+<a href="/teams/<%= @team.id %>/players/<%= player.id %>/edit"><button type="submit" class="btn btn-secondary">EDIT</button></a>
 <% end %><br>
 
 <%= link_to "Go Back Home", "/" %>

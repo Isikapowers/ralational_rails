@@ -15,12 +15,9 @@ RSpec.describe Store, type: :model do
 
   it {should have_many :books}
 
-  xit "can order stores in recent created at order" do #There are duplicates.
-    allow(@store1).to receive(:created_at).and_return("2021-08-20")
-    allow(@store2).to receive(:created_at).and_return("2021-08-26")
+  it "can order stores in recent created at order" do
+    expect(Store.order("created_at DESC")).to eq([@store2, @store1])
 
-    expect(Store.order(created_at: :desc)).to eq([@store2, @store1])
-  end
 
   it "can count books in the store" do
     expect(@store1.books.count).to eq(2)
