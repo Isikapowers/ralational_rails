@@ -30,7 +30,10 @@ class TeamPlayersController < ApplicationController
   end
 
   def edit
-    @player = Player.find(params[:player_id])
+    @team = Team.find(params[:team_id])
+    @player = @team.players.find(params[:player_id])
+
+    redirect_to "/teams/#{@team.id}/players"
   end
 
   def update

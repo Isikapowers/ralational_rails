@@ -51,9 +51,37 @@ RSpec.describe 'the teams players index page' do
       expect(page).to have_content("#{@lebron.number}")
       expect(page).to have_content("#{@lebron.injured}")
     end
+
+    it 'shows each teams players attributes' do
+      visit "/teams/#{@team.id}/players"
+
+      expect(page).to have_content(@kevin.name)
+      expect(page).to have_content(@kevin.number)
+      expect(page).to have_content(@kevin.injured)
+
+      expect(page).to have_content(@lebron.name)
+      expect(page).to have_content(@lebron.number)
+      expect(page).to have_content(@lebron.injured)
+    end
+
+    it 'takes you to a teams players' do
+      visit "/teams/#{@team.id}"
+
+      click_on "List of Players"
+
+      expect(current_path).to eq("/teams/#{@team.id}/players")
+    end
   end
 
   describe "iteration 2" do
+    it "can take user to teams page from every page" do
+      visit "/teams/#{@team.id}/players"
+
+      click_link "Basketball Teams"
+
+      expect(current_path).to eq("/teams")
+    end
+
     it "allows us to create a player from a teams players page" do
       visit "/teams/#{@team.id}/players"
 
@@ -68,10 +96,44 @@ RSpec.describe 'the teams players index page' do
       expect(current_path).to eq("/teams/#{@team.id}/players/new")
     end
 
+    it "allows us to fill out the form and submit" do
+      visit "/teams/#{@team.id}/players/new"
+
+      fill_in("Name", with: "Michael Jordan")
+      fill_in("Number", with: 24)
+
+      click_on "SUBMIT"
+
+      expect(current_path).to eq("/teams/#{@team.id}/players")
+      expect(page).to have_content("Michael Jordan")
+    end
+
     it "has a link for alphabetical order" do
       visit "/teams/#{@team.id}/players"
 
       expect(page).to have_content("View Alphabetical Order")
+    end
+
+    it "has a link to edit player" do
+      visit "/teams/#{@team.id}/players"
+
+      click_link "EDIT", match: :first
+
+      expect(page).to have_field(:name)
+      expect(page).to have_field(:number)
+      expect(page).to have_field(:injured)
+    end
+
+    xit "allows you to edit a player" do
+      visit "/teams/#{@team.id}/players/#{@kevin.id}/edit"
+
+      fill_in("name", with: "KEVIN")
+      fill_in("Number", with: 1)
+
+      click_on "SUBMIT"
+
+      expect(current_path).to eq("/teams/#{@team.id}/players/#{@kevin.id}")
+      expect(page).to have_content("KEVIN")
     end
 
     xit "shows players in alphabetical order when clicking link" do
