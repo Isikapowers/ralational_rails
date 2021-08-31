@@ -19,6 +19,8 @@
 
 <% @books.each do |book| %>
   <h4><a href="/books/<%= book.id %>"><%= book.title %></a></h4>
+  <p>Price: <%= book.price %></p>
+  <p>Kids Friendly: <%= book.kids_friendly %></p>
   <a href="/books/<%= book.id  %>/edit"><button type="submit" class="btn btn-secondary">EDIT</button></a>
   <form action="/books/<%= book.id %>" method="POST">
     <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">

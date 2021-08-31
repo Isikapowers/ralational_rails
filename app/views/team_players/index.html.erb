@@ -32,6 +32,7 @@
 <p>Number: <%= player.number %></p>
 <p>Injured: <%= player.injured %></p>
 <a href="/teams/<%= @team.id %>/players/<%= player.id %>/edit"><button type="submit" class="btn btn-secondary">EDIT</button></a>
+<%= button_to "Delete", "/teams/#{@team.id}/players/#{player.id}", method: :delete %>
 <% end %><br>
 
 <%= link_to "Go Back Home", "/" %>

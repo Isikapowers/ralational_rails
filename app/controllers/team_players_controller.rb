@@ -53,7 +53,7 @@ class TeamPlayersController < ApplicationController
 
   def destroy
     team = Team.find(params[:team_id])
-    player.destroy(params[:player_id])
+    team.players.destroy(params[:player_id])
 
     redirect_to "/teams/#{team.id}/players"
   end
