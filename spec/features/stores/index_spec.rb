@@ -128,7 +128,7 @@ RSpec.describe "Stores Index Page" do
 
       expect(current_path).to eq("/stores")
       expect(page).to have_no_content(@store1)
-      expect(page).to have_content(@store2.name)
+      expect(page).to have_content(@store1.name)
     end
   end
 
@@ -141,5 +141,4 @@ RSpec.describe "Stores Index Page" do
       expect(current_path).to eq("/")
     end
   end
-
 end
