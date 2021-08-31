@@ -73,18 +73,26 @@ RSpec.describe "Book Index Page" do
 
       fill_in("Title", with: "Hello Kitty")
       fill_in("Price", with: 12.99)
-      # check("Kids friendly", with: true)
+      check("Kids Friendly", with: true)
 
       click_on "SUBMIT"
 
       expect(current_path).to eq("/books/#{@book1.id}")
       expect(page).to have_content("Hello Kitty")
       expect(page).to have_content(12.99)
-      # expect(page).to have_content("true")
+      expect(page).to have_content("true")
     end
 
     it "can order books in alphabetical order" do
       expect(@store1.books.alphabetical_order).to eq([@book1, @book2, @book3])
+    end
+
+    it "can show only kids friendly books" do
+      expect(@store1.books.show_only_true).to eq([@book1, @book2])
+    end
+
+    it "can search books by price" do
+      expect(@store1.books.search(20)).to eq([@book2])
     end
   end
 
@@ -100,7 +108,7 @@ RSpec.describe "Book Index Page" do
     end
   end
 
-  describe "Go back home" do
+  describe "Go Back Home Link" do
     it "can go back home" do
       visit "/books/"
 

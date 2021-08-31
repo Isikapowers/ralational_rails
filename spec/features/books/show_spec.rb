@@ -9,9 +9,6 @@ RSpec.describe "Book Show Page" do
     @book3 = @store1.books.create!(title: "Rubyist", price: 34.89, kids_friendly: false)
   end
 
-  let(:this) {@book1}
-  let(:that) {@book2}
-
   describe "Features in Iteration 1" do
     it "shows each book by id" do
       visit "/books/#{@book1.id}"
@@ -70,10 +67,11 @@ RSpec.describe "Book Show Page" do
 
       fill_in(:title, with: "Dinosaurs and Friends")
       fill_in(:price, with: 14.99)
+      check(:kids_friendly)
 
       click_on "SUBMIT"
 
-      expect(current_path).to eq("/books/#{Book.last.id - 2}")
+      expect(current_path).to eq("/books/#{@book1.id}")
     end
 
     it "shows only the kids friendly books" do
@@ -84,11 +82,11 @@ RSpec.describe "Book Show Page" do
       expect(page).to have_no_content(@book3.title)
     end
 
-    xit "can order books in alphabetical order" do
+    it "can order books in alphabetical order" do
+      visit "/books"
 
-      expect(this).to appear_before(that)
-
-      # expect(@store1.books.alphabetical_order).to eq(@book1)
+      expect(@book1.title).to appear_before(@book2.title)
+      expect(current_path).to eq("/books")
     end
   end
 
@@ -103,7 +101,7 @@ RSpec.describe "Book Show Page" do
     end
   end
 
-  describe "Go Back Home" do
+  describe "Go Back Home Link" do
     it "can go back home" do
       visit "/stores/"
 

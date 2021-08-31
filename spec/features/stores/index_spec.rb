@@ -2,8 +2,12 @@ require "rails_helper"
 
 RSpec.describe "Stores Index Page" do
   before :each do
-    @store1 = Store.create!(name: "Barnes and Noble", open_on_weekends: true, inventory: 4739)
-    @store2 = Store.create!(name: "50/50 Book Store", open_on_weekends: false, inventory: 638)
+    @store1 = Store.create!(name: "Barnes and Noble", open_on_weekends: true, inventory: 4739, created_at: "2021-08-30")
+    @store2 = Store.create!(name: "50/50 Book Store", open_on_weekends: false, inventory: 638, created_at: "2021-08-31")
+
+    @book1 = @store1.books.create!(title: "Dino Potty Book", price: 13.99, kids_friendly: true)
+    @book2 = @store1.books.create!(title: "I Love You to The Moon and Back", price: 29.89, kids_friendly: true)
+    @book3 = @store1.books.create!(title: "Rubyist", price: 18.98, kids_friendly: false)
   end
 
   describe "Features in teration 1" do
@@ -26,10 +30,10 @@ RSpec.describe "Stores Index Page" do
       expect(page).to have_no_content(@store1.name)
     end
 
-    xit "can show user the most recently created store first and when it was created" do
+    it "can show user the most recently created store first and when it was created" do
       visit "/stores"
 
-      expect(page).to have_content(:created_at)
+      expect(@store2.name).to appear_before(@store1.name)
     end
 
     it "can take user to stores page from every page" do
@@ -63,14 +67,14 @@ RSpec.describe "Stores Index Page" do
 
       fill_in(:name, with: "Books and Friends")
       fill_in(:inventory, with: 3725)
-      # fill_in(:open_on_weekends, with: true)
+      check(:open_on_weekends, with: true)
 
       click_on "SUBMIT", match: :first
 
       expect(current_path).to eq("/stores")
       expect(page).to have_content("Books and Friends")
-      # expect(page).to have_content("3725")
-      # expect(page).to have_content(true)
+      # expect(page).to have_content(3725)
+      # expect(page).to have_content("true")
     end
 
     it "can take user to a specific store" do
@@ -109,14 +113,26 @@ RSpec.describe "Stores Index Page" do
 
       fill_in("Name", with: "Hello Book Lovers")
       fill_in("Inventory", with: 8888)
-      # check("Open on weekends", with: true)
+      check(:open_on_weekends, with: true)
 
       click_on "SUBMIT"
 
       expect(current_path).to eq("/stores/#{@store1.id}")
       expect(page).to have_content("Hello Book Lovers")
       # expect(page).to have_content("8888")
-      # expect(page).to have_content("Open_on_weekends: true")
+      expect(page).to have_content("true")
+    end
+
+    it "can order books in alphabetical order" do
+      expect(@store1.books.alphabetical_order).to eq([@book1, @book2, @book3])
+    end
+
+    it "can show only kids friendly books" do
+      expect(@store1.books.show_only_true).to eq([@book1, @book2])
+    end
+
+    it "can search books by price" do
+      expect(@store1.books.search(20)).to eq([@book2])
     end
   end
 

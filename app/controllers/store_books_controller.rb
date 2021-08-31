@@ -5,7 +5,7 @@ class StoreBooksController < ApplicationController
     @books = @store.books
     if params[:order] == "title"
       @books = @books.alphabetical_order
-    elsif params[:search]
+    elsif params[:search].present?
       @books = @books.search(params[:search])
     end
   end

@@ -29,8 +29,8 @@ RSpec.describe Book, type: :model do
     expect(@store2.books.alphabetical_order).to eq([@harry, @rr])
   end
 
-  xit "can search books by price" do
-    expect(@store1.search(15)).to eq(@moon)
+  it "can search books by price" do
+    expect(Book.search(29)).to eq([@moon, @rr])
   end
 
 end

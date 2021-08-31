@@ -17,7 +17,7 @@ RSpec.describe Store, type: :model do
 
   it "can order stores in recent created at order" do
     expect(Store.order("created_at DESC")).to eq([@store2, @store1])
-  end
+
 
   it "can count books in the store" do
     expect(@store1.books.count).to eq(2)
@@ -31,6 +31,10 @@ RSpec.describe Store, type: :model do
   it "can order books in alphabetical order" do
     expect(@store1.books.alphabetical_order).to eq([@dino, @moon])
     expect(@store2.books.alphabetical_order).to eq([@harry, @rr])
+  end
+
+  it "can search books in a store by price" do
+    expect(@store1.books.search(20)).to eq([@moon])
   end
 
 end
