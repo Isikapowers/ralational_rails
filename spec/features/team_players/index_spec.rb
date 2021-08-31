@@ -124,15 +124,17 @@ RSpec.describe 'the teams players index page' do
       expect(page).to have_field(:injured)
     end
 
-    xit "allows you to edit a player" do
-      visit "/teams/#{@team.id}/players/#{@kevin.id}/edit"
+    it "allows you to edit a player" do
+      visit "/teams/#{@team.id}/players"
 
-      fill_in("name", with: "KEVIN")
-      fill_in("Number", with: 1)
+      click_link "EDIT", match: :first
 
-      click_on "SUBMIT"
+      fill_in('Name', :with => 'KEVIN')
+      fill_in('Number', :with => '24')
+      check('injured')
 
-      expect(current_path).to eq("/teams/#{@team.id}/players/#{@kevin.id}")
+      click_on "Submit"
+
       expect(page).to have_content("KEVIN")
     end
 
