@@ -9,9 +9,9 @@
 * [Status](#status)
 * [Contact](#contact)
 ## General info
-This project is  a program dedicated to calculating soccer statistics. It takes data from csv files and reports statistics and creates a website with the analysis.
+This project is an app designed to highlight a one to many database relationship using the Rails framework.
 ## Screenshots
-![Website Picture](https://user-images.githubusercontent.com/83834410/128053930-e7533171-74e3-49e4-981f-ec2d4b1ded3e.png)
+![Schema](https://user-images.githubusercontent.com/82777170/131573615-f7c503fe-4787-4ee1-9213-0328d93616e0.png)
 ## Learning Goals
 * Design a one to many relationship using a schema designer
 * Write migrations to create tables with columns of varying data types and foreign keys.
@@ -44,18 +44,17 @@ Then, run it using ruby (note: '$' is not typed).
 3. Open up a server in your terminal: 
    ```
    $ rails server
-
    ```
 4. Open up a web broswer and type http://localhost:3000/
 
 ## Features
-List of features ready and TODOs for future development
-* Able to calculate league statistics
-* Able to calculate game statistics
-* Able to calculate statistics by specific team and season
+List of features
+* Displays RESTful routes
+* Allows user to navigate through app and discover stores, books, teams, and players
+
 ## Future Enhancements:
 * Make website pretty
-* Allow user to request specific team statistics on website
+
 ## Contact
 Created by
 * [@kevinmugele](https://github.com/KevinMugele)
