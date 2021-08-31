@@ -17,8 +17,8 @@ RSpec.describe Store, type: :model do
 
   it "can order stores in recent created at order" do
     expect(Store.order("created_at DESC")).to eq([@store2, @store1])
-
-
+  end
+  
   it "can count books in the store" do
     expect(@store1.books.count).to eq(2)
   end
