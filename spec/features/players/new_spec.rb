@@ -23,5 +23,4 @@ RSpec.describe 'the players index page' do
 
     expect(current_path).to eq("/players/#{@kevin.id}")
   end
-
 end

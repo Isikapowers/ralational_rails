@@ -92,7 +92,6 @@ RSpec.describe "Stores Show Page" do
 
       fill_in(:name, with: "50/50 Book Store")
       fill_in(:inventory, with: 72343)
-      # check_box(:open_on_weekends, with: true)
 
       click_on "SUBMIT"
 
@@ -123,5 +122,4 @@ RSpec.describe "Stores Show Page" do
       expect(current_path).to eq("/")
     end
   end
-
 end

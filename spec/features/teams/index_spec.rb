@@ -61,7 +61,6 @@ RSpec.describe 'the teams index page' do
 
       expect(page).to have_content("New York Knicks")
       expect(page).to have_content("Created at:")
-      #need to test if order is working properly
     end
   end
 
