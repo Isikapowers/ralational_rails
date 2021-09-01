@@ -32,5 +32,4 @@ RSpec.describe Book, type: :model do
   it "can search books by price" do
     expect(Book.search(29)).to eq([@moon, @rr])
   end
-
 end

@@ -75,5 +75,4 @@ RSpec.describe "Store Book Show Page" do
       expect(page).to have_content(@store2.name)
     end
   end
-
 end

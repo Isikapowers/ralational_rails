@@ -71,14 +71,11 @@ RSpec.describe "Store Book Index Page" do
 
       fill_in("Title", with: "Hello Kitty")
       fill_in("Price", with: 12.99)
-      # check("Kids friendly", with: true)
 
       click_on "SUBMIT"
 
       expect(current_path).to eq("/stores/#{@store1.id}/books")
       expect(page).to have_content("Hello Kitty")
-      # expect(page).to have_content("8888")
-      # expect(page).to have_content("Open_on_weekends: true")
     end
 
     it "can take user to edit existing book with form" do
@@ -98,14 +95,11 @@ RSpec.describe "Store Book Index Page" do
 
       fill_in("Title", with: "Hello Kitty")
       fill_in("Price", with: 12.99)
-      # check("Kids friendly", with: true)
 
       click_on "SUBMIT"
 
       expect(current_path).to eq("/stores/#{@store1.id}/books/#{@dino.id}")
       expect(page).to have_content("Hello Kitty")
-      # expect(page).to have_content("8888")
-      # expect(page).to have_content("Open_on_weekends: true")
     end
 
     it "can disply books in alphabetical order" do
@@ -149,5 +143,4 @@ RSpec.describe "Store Book Index Page" do
       expect(current_path).to eq("/")
     end
   end
-
 end

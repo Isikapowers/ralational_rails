@@ -73,8 +73,6 @@ RSpec.describe "Stores Index Page" do
 
       expect(current_path).to eq("/stores")
       expect(page).to have_content("Books and Friends")
-      # expect(page).to have_content(3725)
-      # expect(page).to have_content("true")
     end
 
     it "can take user to a specific store" do
@@ -105,7 +103,6 @@ RSpec.describe "Stores Index Page" do
 
       expect(page).to have_field("name")
       expect(page).to have_field("inventory")
-      # expect(page).to have_check("kids friendly")
     end
 
     it "can let user fill out the form and submit" do
@@ -119,7 +116,6 @@ RSpec.describe "Stores Index Page" do
 
       expect(current_path).to eq("/stores/#{@store1.id}")
       expect(page).to have_content("Hello Book Lovers")
-      # expect(page).to have_content("8888")
       expect(page).to have_content("true")
     end
 
