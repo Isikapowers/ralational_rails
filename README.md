@@ -6,6 +6,7 @@
 * [Technologies](#technologies)
 * [Setup](#setup)
 * [Features](#features)
+* [Future Enhancements](#future-enhancements)
 * [Contact](#contact)
 ## General info
 This project is an app designed to highlight a one to many database relationship using the Rails framework.
@@ -53,6 +54,9 @@ List of features
 
 ## Future Enhancements:
 * Make website pretty
+* Sort Stores/Teams by Number of Books/Players
+* Search by name (exact match)
+* Search by name (partial match)
 
 ## Contact
 Created by
