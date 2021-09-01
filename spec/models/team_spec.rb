@@ -15,6 +15,7 @@ RSpec.describe Team do
 
   it "can order teams in recently created order" do
     expect(Team.order("created_at DESC")).to eq([@team2, @team1])
+    expect(Team.all.to_sql).to eq(Team.all.order("created_at DESC").to_sql)
   end
 
   it "can count players in the team" do
