@@ -9,7 +9,7 @@
 * [Future Enhancements](#future-enhancements)
 * [Contact](#contact)
 ## General info
-This project is an app designed to highlight a one to many database relationship using the Rails framework.
+This project is an app designed to highlight a one to many database relationship using the Rails framework. This project has two one to many relationships (Stores and Books, Teams and Players).
 ## Screenshots
 ![Schema](https://user-images.githubusercontent.com/82777170/131573615-f7c503fe-4787-4ee1-9213-0328d93616e0.png)
 ## Learning Goals
