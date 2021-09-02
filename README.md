@@ -1,4 +1,5 @@
-###  Relational Rails
+#  Relational Rails
+
 ## Table of contents
 * [General info](#general-info)
 * [Screenshots](#screenshots)
